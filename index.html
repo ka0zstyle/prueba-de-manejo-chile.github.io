@@ -3,38 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario de Practica para Licencia de Manejo de Chile</title>
+    <title>Cuestionario de Práctica para Licencia de Manejo de Chile</title>
+    
+    <!-- Agregamos el enlace a la fuente de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- Agregamos una meta descripción para SEO -->
+    <meta name="description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.">
 
+    <!-- Agregamos un marcado de esquema para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "headline": "Cuestionario de Práctica para Licencia de Manejo en Chile",
+      "description": "Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://main--test-de-manejo-chile.netlify.app/"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Johandri Suarez"
+      },
+      "datePublished": "2023-10-04",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://main--test-de-manejo-chile.netlify.app/imagen/fondo/4.png",
+        "height": 800,
+        "width": 1200
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "https://main--test-de-manejo-chile.netlify.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://main--test-de-manejo-chile.netlify.app/imagen/fondo/4.png",
+          "width": 200,
+          "height": 60
+        }
+      }
+    }
+    </script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
 <body class="background-1">
     <div class="dark-mode-overlay"></div>
     
-
-<div class="menu-container">
-    <button id="menuButton" class="menu-button">Mostrar Menú</button>
-<div id="menuOptions" class="menu-options">
-    <!-- Opción "Buscar Pregunta" y cuadro de texto en el mismo contenedor -->
-    <div class="search-question-container">
-        <input type="text" id="questionNumberInput" class="menu-option" placeholder="Número de Pregunta">
-        <button id="showQuestionBtn" class="menu-option">: Buscar Pregunta</button>
-
+    <div class="menu-container">
+        <button id="menuButton" class="menu-button">Mostrar Menú</button>
+        <div id="menuOptions" class="menu-options">
+            <div class="search-question-container">
+                <input type="text" id="questionNumberInput" class="menu-option" placeholder="Número de Pregunta">
+                <button id="showQuestionBtn" class="menu-option">: Buscar Pregunta</button>
+            </div>
+            <button id="darkModeButton" class="menu-option">Activar Modo Oscuro</button>
+            Tamaño de Textos<input type="range" id="fontSizeControl" min="10" max="30" placeholder="Número de Pregunta" step="1" value="16">
+            <button id="randomizeQuestionsBtn" class="menu-option">Preguntas Aleatorias</button>
+        </div>
     </div>
-    <button id="darkModeButton" class="menu-option">Activar Modo Oscuro</button>
-Tamaño de Textos<input type="range" id="fontSizeControl" min="10" max="30" placeholder="Número de Pregunta" step="1" value="16">
-        <button id="randomizeQuestionsBtn" class="menu-option">Preguntas Aleatorias</button>
-</div>
-</div>
-</div>
+
     <div class="container">
-        <h1>Cuestionario de Practica para Licencia de Manejo de Chile</h1>
+        <h1>Cuestionario de Práctica para Licencia de Manejo de Chile</h1>
         <br>
         <form id="quizForm">
         </form>
@@ -50,25 +83,19 @@ Tamaño de Textos<input type="range" id="fontSizeControl" min="10" max="30" plac
             <p class="result-text"></p>
             <p class="correct-answer"></p>
         </div>
-<div id="messageBox" class="message-box">
-    <p class="message-text"></p>
-</div>
+        <div id="messageBox" class="message-box">
+            <p class="message-text"></p>
+        </div>
         <div id="score"></div>
 
-<div id="questionModal" class="modal">
-    <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <div id="modalQuestionContainer"></div>
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
+        <div id="questionModal" class="modal">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <div id="modalQuestionContainer"></div>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
-</body>
 </body>
 </html>
