@@ -1,0 +1,406 @@
+/* Estilos CSS personalizados para el cuestionario */
+
+:root {
+  --base-font-size: 16px;
+  --fieldset-legend-font-size-multiplier: 1.7; /* Ajusta el multiplicador para fieldset legend */
+}
+
+fieldset legend {
+  font-size: calc(var(--base-font-size) * var(--fieldset-legend-font-size-multiplier));
+    font-weight: bold; /* Texto en negrita */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra suave */
+    text-transform: ; /* Texto en mayúsculas */
+    color: #0C28C5; /* Color de texto oscuro (por ejemplo, negro) */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  text-shadow: 0.5px 1px #FFF150;
+}
+
+#nextButtonContainer {
+    text-align: center;
+    font-weight: bold;
+    font-family: ;
+}
+
+fieldset {
+    background-color: lightblue;
+    border-radius: 5px;
+    border: 5px solid #007bff;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    bord
+
+}
+
+legend {
+    font-weight: arial;
+    color: lightskyblue;
+    background-color: lightblue;
+    border-radius: 10px;
+
+
+}
+
+#questionModal img {
+    max-width: 100%; /* Establece el ancho máximo de la imagen al 100% del modal */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+}
+
+#modalQuestionContainer {
+    max-height: 80vh; /* Establece una altura máxima del 80% de la altura de la ventana */
+    overflow-y: auto; /* Agrega desplazamiento vertical si el contenido es demasiado largo */
+    text-align: center; /* Centra el contenido horizontalmente */
+    padding: 20px; /* Añade un espacio alrededor del contenido */
+    background-color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8); /* Agrega una sombra al modal */
+    border-radius: 10px;
+    margin: 0 auto; /* Centra el modal horizontalmente */
+}
+
+.search-question-container {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aplica la misma sombra a todo el contenedor */
+    overflow: auto; /* Agrega desbordamiento automático cuando sea necesario */
+    max-width: 100%; /* Evita que el contenedor se desborde de la pantalla */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: var(--base-font-size);
+    font-family: sans-serif   ;
+    font-weight: bold;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+/* Estilo para el botón activo (verde) */
+.active-button {
+    background-color: green;
+    color: white;
+}
+
+/* Estilo para el botón inactivo (gris) */
+.inactive-button {
+    background-color: gray;
+    color: white;
+}
+
+.question-number {
+    font-weight: bold;
+    font-size: 0px;
+}
+
+#submitBtnxContainer {
+  text-align: center;
+  margin-top: 20px; /* Ajusta el margen superior según tus preferencias */
+}
+
+/* Estilos para centrar el botón "Enviar Respuestas" */
+.submit-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit-button-container button {
+    margin-top: 10px; /* Ajusta el espacio entre los botones si es necesario */
+}
+
+.message-box {
+  display: none;
+  background-color: #4CAF50; /* Color de fondo verde para respuesta correcta */
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+font-weight: bold;
+}
+
+.message-box.error {
+  background-color: #f44336; /* Color de fondo rojo para respuesta incorrecta */
+}
+
+.error {
+    background-color: #ff0000; /* Fondo rojo */
+    border: 0px solid #ff0000; /* Borde rojo */
+    color: whitesmoke; /* Texto rojo */
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    margin: 5px 0;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: var(--base-font-size);
+}
+
+/* Estilos para el cuadro modal */
+.modal {
+    display: none; /* Oculta el modal de forma predeterminada */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Coloca el modal por encima del contenido principal */
+
+}
+
+.modal-content {
+    border-radius: 5px;
+    position: relative;
+}
+
+/* Estilos para el botón de cierre (la 'X') */
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+}
+
+/* Estilo para el botón de menú */
+.menu-container {
+    position: relative;
+    text-align: center;
+}
+
+/* Estilo para el botón de menú */
+.menu-button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilos para las opciones del menú (ocultas inicialmente) */
+.menu-options {
+    display: none;
+    position: absolute;
+    background-color: green;
+    border-radius: 10px;
+    width: auto; /* Ocupa todo el ancho del contenido */
+    top: 50%; /* Centra verticalmente en relación al elemento padre */
+    left: 50%; /* Centra horizontalmente en relación al elemento padre */
+    transform: translate(-50%, 22%); /* Corrige la posición al centro */
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    padding: 10px; /* Espacio interno */
+}
+
+/* Estilos para las opciones del menú */
+.menu-option {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none; /* Elimina el borde de los botones del menú */
+    width: 100%; /* Ocupa todo el ancho del menú */
+    margin: 5px 0; /* Espacio vertical entre botones */
+    background-color: green;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega sombra al texto */
+    cursor: pointer;
+}
+
+.search-question-container {
+    display: flex; /* Utiliza un diseño flexible para alinear los elementos horizontalmente */
+    align-items: center;
+}
+
+#questionNumberInput.menu-option {
+    flex-grow: 1; /* Hace que el cuadro de texto ocupe el espacio restante */
+    padding: 0px;
+    text-align: center;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: lightgray;
+    width: 30%;
+
+}
+#questionNumberInput.menu-option::placeholder {
+    color: lightgray; /* Establece el color del placeholder en gris claro */
+}
+
+/* Estilos para el placeholder del cuadro "Número de Pregunta" */
+#showQuestionBtn.menu-option {
+    flex-basis: auto; /* Restablece el tamaño base del botón */
+    margin-right: 10px; /* Espacio entre el botón y el cuadro de texto */
+}
+/* Cambia el color de fondo de las opciones al pasar el ratón sobre ellas */
+.menu-option:hover {
+    background-color: darkgreen;
+}
+
+.search-question-container {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aplica la misma sombra a todo el contenedor */
+}
+
+/* Estilos para el cuadro de texto "Número de Pregunta" */
+#questionNumberInput.menu-option {
+    flex-grow: 1;
+    padding: 5px;
+    text-align: center;
+    border: none;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    box-shadow: none; /* Elimina la sombra del cuadro de texto */
+}
+
+/* Estilos para el botón "Buscar Pregunta" */
+#showQuestionBtn.menu-option {
+    flex-basis: auto;
+    margin-right: 10px;
+    box-shadow: none; /* Elimina la sombra del botón */
+}
+
+body {
+margin: 0;
+padding: 0;
+background-image: url('imagen/fondo/1.png'); /* Coloca la imagen de fondo aquí */
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center center; /* Centra la imagen vertical y horizontalmente */
+position: relative; /* Agrega posición relativa para que los pseudo-elementos sean relativos a este */
+font-size: var(--base-font-size);
+    background-color: lightblue;
+    /* Agrega otros estilos claros según sea necesario */
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+    /* Agrega otros estilos oscuros según sea necesario */
+}
+
+/* Estilos para modo oscuro */
+.dark-mode {
+    background-color: #333; /* Cambia el fondo a un color oscuro */
+    color: white; /* Cambia el color del texto a blanco */
+
+
+
+}
+
+.dark-mode legend {
+    color: lightskyblue;
+    background-color: #431;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 1.2); /* Agrega una sombra suave */
+    border-radius: 10px;
+
+
+
+
+}
+
+.dark-mode .search-question-container {
+    color: white; /* Cambia el color del texto del cuadro a blanco */
+}
+
+.dark-mode fieldset {
+    background-color: #433; /* O cualquier otro valor deseado */
+}
+
+.dark-mode .question-container {
+    background-color: #333; /* Color de fondo oscuro */
+
+    color: white; /* Color de texto claro */
+
+
+}
+
+input[type="text"] {
+    width: 25px; /* Cambia el tamaño según tus preferencias */
+
+
+}
+
+
+body.dark-mode .question-container {
+    background-color: black; /* Cambia el fondo a negro en modo oscuro */
+    color: white; /* Cambia el color del texto a blanco en modo oscuro */
+    /* Otros estilos para el modo oscuro */
+}
+
+#modalQuestionContainer {
+    margin: 10px; /* Reduce el margen */
+    padding: 10px; /* Reduce el relleno */
+    width: px;
+    background-color: white; /* Cambia el fondo a blanco en modo normal */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 1.2); /* Agrega una sombra suave */
+    font-size: 25px; /* Cambia el tamaño de fuente a un valor más normal */
+    border: 5px solid #ccc; /* Agrega un borde con un color gris claro */
+    border-radius: 10px;
+    top: 100%; /* Alinea las opciones debajo del botón de menú */
+    left: 40%;
+
+}
+
+.close {
+  text-shadow: 0.5px 1px #FFF150;
+    font-size: 50px; /* Cambia el tamaño de la "X" a 30px */
+    color: mediumseagreen; /* Cambia el color del texto a blanco en modo oscuro */
+}
+
+.dark-mode .close {
+  text-shadow: 0.5px 1px #FFF150;
+    font-size: 50px; /* Cambia el tamaño de la "X" a 30px */
+    color: mediumseagreen; /* Cambia el color del texto a blanco en modo oscuro */
+}
+
+
+
+.dark-mode #modalQuestionContainer {
+    margin: 10;
+    padding: 10;
+    width: auto;
+    background-color: black;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    border-radius: 10px;
+
+
+    }
