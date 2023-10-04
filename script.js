@@ -3606,14 +3606,18 @@ function displayQuestionInModal(question) {
 
 // Maneja el clic en el botón "Mostrar Pregunta"
 showQuestionBtn.addEventListener("click", () => {
-    const questionNumber = parseInt(questionNumberInput.value);
+  const questionNumber = parseInt(questionNumberInput.value);
 
-    if (!isNaN(questionNumber) && questionNumber >= 1 && questionNumber <= questions.length) {
-        const selectedQuestion = questions[questionNumber - 1];
-        displayQuestionInModal(selectedQuestion);
+  if (!isNaN(questionNumber) && questionNumber >= 1 && questionNumber <= questions.length) {
+    const selectedQuestion = questions.find((question) => question.number === questionNumber);
+    if (selectedQuestion) {
+      displayQuestionInModal(selectedQuestion);
     } else {
-        alert("Número de pregunta no válido. Ingresa un número entre 1 y " + questions.length);
+      alert("La pregunta con el número especificado no se encontró.");
     }
+  } else {
+    alert("Número de pregunta no válido. Ingresa un número entre 1 y " + questions.length);
+  }
 });
 
 // Maneja el clic en el botón de cerrar
