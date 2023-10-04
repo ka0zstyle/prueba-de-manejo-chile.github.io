@@ -1,0 +1,24 @@
+Quiz de Conducción - Readme
+Este repositorio contiene un cuestionario de preguntas relacionadas con la conducción y la seguridad vial. Puedes utilizar este cuestionario para poner a prueba tus conocimientos sobre normas de tráfico y seguridad en la carretera.
+
+Cómo utilizar el cuestionario
+Iniciar el cuestionario: Al abrir la página, verás una pregunta con opciones de respuesta. Selecciona las opciones que consideres correctas y haz clic en el botón "Enviar" para verificar tus respuestas.
+
+Verificar respuestas: Después de enviar tus respuestas, el sistema te indicará si tus respuestas son correctas o incorrectas. También mostrará las respuestas correctas si es necesario.
+
+Siguiente pregunta: Para pasar a la siguiente pregunta, haz clic en el botón "Siguiente". El cuestionario consta de varias preguntas que puedes responder una por una.
+
+Puntuación: Tu puntuación se mostrará en la parte superior de la página. Se actualizará a medida que avances en el cuestionario. Intenta obtener la puntuación máxima.
+
+Modo oscuro: Si prefieres usar el modo oscuro, puedes activarlo haciendo clic en el botón "Activar Modo Oscuro" en la esquina superior derecha.
+
+Buscar preguntas específicas: Si deseas ver una pregunta específica, puedes ingresar el número de la pregunta en el campo de búsqueda y hacer clic en "Mostrar Pregunta". Esto abrirá una ventana emergente con la pregunta y las respuestas.
+
+Mezclar preguntas: Si deseas responder a las preguntas en un orden aleatorio, puedes hacer clic en el botón "Mezclar Preguntas". Esto cambiará el orden de las preguntas cada vez que se cargue la página.
+
+Tamaño de fuente: Puedes ajustar el tamaño de fuente utilizando el control deslizante de tamaño de fuente en la parte superior de la página.
+
+Información adicional
+Este cuestionario está diseñado para ayudarte a mejorar tus conocimientos sobre seguridad vial y normas de tráfico. Si tienes alguna pregunta o sugerencia sobre el cuestionario, no dudes en comunicarte con nosotros.
+
+¡Buena suerte y conduce de manera segura!
