@@ -419,7 +419,7 @@ body.dark-mode .question-container {
     z-index: 9999; /* Asegura que el encabezado esté al frente */
 }
 
-#background-image {
+#background-imagex {
     width: 100%; /* La imagen se ajustará al ancho del contenedor */
     max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original en dispositivos más grandes */
     height: auto; /* La altura se ajustará automáticamente */
