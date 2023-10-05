@@ -3321,7 +3321,11 @@ const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
+ 
 scoreDiv.style.fontSize = "20px"
+scoreDiv.style.border = "2px solid gold"; // Puedes ajustar el ancho del borde y el color (en este caso, "gold" para dorado)
+scoreDiv.style.boxShadow = "5px 5px 10px rgba(0, 0, 0, 0.2)"; // Puedes ajustar los valores según la sombra que desees
+ 
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
 const questionContainer = document.getElementById("questionContainer");
@@ -3343,8 +3347,8 @@ startQuizButton.addEventListener("click", function(event) {
 });
 
 fontSizeControl.addEventListener("input", () => {
-  const root = document.documentElement;
-  const newSize = fontSizeControl.value + "px";
+const root = document.documentElement;
+const newSize = fontSizeControl.value + "px";
 
   root.style.setProperty("--base-font-size", newSize);
   root.style.setProperty("--checkbox-size", newSize);
