@@ -419,9 +419,9 @@ body.dark-mode .question-container {
     z-index: 9999; /* Asegura que el encabezado esté al frente */
 }
 
-#background-imagex {
-    width: 15%; /* La imagen se ajustará al ancho del contenedor */
-    max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original en dispositivos más grandes */
+#background-image {
+    width: 100%; /* La imagen se ajustará al ancho del contenedor */
+    max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original */
     height: auto; /* La altura se ajustará automáticamente */
 }
 
@@ -446,14 +446,4 @@ body.dark-mode .question-container {
 
 #start-quiz-button:hover {
     background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-    /* Estilos específicos para dispositivos móviles */
-    #intro-header {
-        max-width: 90%; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
-    }
-    #background-image {
-        max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
-    }
 }
