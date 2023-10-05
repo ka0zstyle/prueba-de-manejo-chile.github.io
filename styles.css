@@ -447,3 +447,10 @@ body.dark-mode .question-container {
 #start-quiz-button:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    /* Estilos específicos para dispositivos móviles */
+    #background-image {
+        max-width: 100%;
+    }
+}
