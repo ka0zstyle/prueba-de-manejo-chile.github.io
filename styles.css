@@ -450,6 +450,6 @@ body.dark-mode .question-container {
 
 @media (max-width: 768px) {
     #background-image {
-        max-width: 80vh;
+        max-width: 70%;
     }
 }
