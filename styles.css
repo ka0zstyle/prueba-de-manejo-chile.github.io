@@ -406,9 +406,17 @@ body.dark-mode .question-container {
     }
 
 .dark-mode #intro-header {
-    background-color: rgba(0, 0, 0, 0.9); /* Color de fondo en modo oscuro */
-    color: #fff; /* Color de texto en modo oscuro */
-}
+        max-width: 60vh; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
+        height: 80vh; /* Establece la altura al 100% del viewport */
+    }
+.dark-mode #background-image {
+        max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
+    }
+.dark-mode #start-quiz-button {
+        display: block; /* Hace que el botón ocupe una sola línea completa */
+        width: 100%; /* Establece el ancho al 100% */
+        margin-top: 20px; /* Ajusta el margen superior si es necesario */
+    }
 
 #intro-header {
     position: fixed;
