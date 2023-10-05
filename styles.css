@@ -450,7 +450,10 @@ body.dark-mode .question-container {
 
 @media (max-width: 768px) {
     /* Estilos específicos para dispositivos móviles */
+    #intro-header {
+        max-width: 90%; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
+    }
     #background-image {
-        max-width: 100%; /* Aumenta el tamaño máximo para dispositivos móviles */
+        max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
     }
 }
