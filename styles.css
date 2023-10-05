@@ -314,6 +314,10 @@ font-size: var(--base-font-size);
     /* Agrega otros estilos claros según sea necesario */
 }
 
+score {
+    font-size: 21px;
+}
+
 /* Estilos para el modo oscuro */
 body.dark-mode {
     background-color: #333333;
