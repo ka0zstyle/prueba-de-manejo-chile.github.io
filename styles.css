@@ -451,7 +451,7 @@ body.dark-mode .question-container {
 @media (max-width: 768px) {
     /* Estilos específicos para dispositivos móviles */
     #intro-header {
-        width: 60vh; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
+        width: 30vh; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
         height: 80vh; /* Establece la altura al 100% del viewport */
     }
     #background-image {
