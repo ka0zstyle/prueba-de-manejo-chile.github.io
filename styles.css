@@ -447,3 +447,19 @@ body.dark-mode .question-container {
 #start-quiz-button:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) {
+    /* Estilos específicos para dispositivos móviles */
+    #intro-header {
+        max-width: 90%; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
+        height: 100vh; /* Establece la altura al 100% del viewport */
+    }
+    #background-image {
+        max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
+    }
+    #start-quiz-button {
+        display: block; /* Hace que el botón ocupe una sola línea completa */
+        width: 100%; /* Establece el ancho al 100% */
+        margin-top: 20px; /* Ajusta el margen superior si es necesario */
+    }
+}
