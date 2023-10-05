@@ -448,8 +448,4 @@ body.dark-mode .question-container {
     background-color: #0056b3;
 }
 
-@media (max-width: 768px) {
-    #background-image {
-        max-width: 70%;
-    }
 }
