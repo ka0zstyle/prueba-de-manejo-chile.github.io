@@ -3321,10 +3321,11 @@ const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
- 
+
 scoreDiv.style.fontSize = "20px"
 scoreDiv.style.border = "2px solid gold"; // Puedes ajustar el ancho del borde y el color (en este caso, "gold" para dorado)
-scoreDiv.style.boxShadow = "5px 5px 10px rgba(0, 0, 0, 0.2)"; // Puedes ajustar los valores según la sombra que desees
+scoreDivstyle.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)"; // Puedes ajustar los valores de sombra
+scoreDiv.style.color = "gold"; // Color del texto dorado
  
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
