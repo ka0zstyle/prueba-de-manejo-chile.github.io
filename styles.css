@@ -411,7 +411,7 @@ body.dark-mode .question-container {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     max-width: 80%;
@@ -419,7 +419,7 @@ body.dark-mode .question-container {
     z-index: 9999; /* Asegura que el encabezado esté al frente */
 }
 
-#background-imagex {
+#background-image {
     width: 100%; /* La imagen se ajustará al ancho del contenedor */
     max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original en dispositivos más grandes */
     height: auto; /* La altura se ajustará automáticamente */
@@ -427,12 +427,12 @@ body.dark-mode .question-container {
 
 #intro-header h1 {
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 #intro-header p {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 #start-quiz-button {
@@ -452,9 +452,8 @@ body.dark-mode .question-container {
     /* Estilos específicos para dispositivos móviles */
     #intro-header {
         max-width: 90%; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
-        height: 100vh; /* Establece la altura al 100% del viewport */
     }
-    #background-imagex {
+    #background-image {
         max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
     }
 }
