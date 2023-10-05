@@ -3332,6 +3332,14 @@ const darkModeButton = document.getElementById("darkModeButton");
 const isDarkMode = localStorage.getItem("darkMode") === "true";
 const originalQuestions = questions.slice();
 const fontSizeControl = document.getElementById("fontSizeControl");
+const startQuizButton = document.getElementById("start-quiz-button");
+const introHeader = document.getElementById("intro-header");
+
+// Agrega un controlador de eventos para el clic en el botón de inicio
+startQuizButton.addEventListener("click", function(event) {
+    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+    introHeader.style.display = "none"; // Oculta el encabezado introductorio
+});
 
 fontSizeControl.addEventListener("input", () => {
   const root = document.documentElement;
