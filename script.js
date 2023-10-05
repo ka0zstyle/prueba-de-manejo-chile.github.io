@@ -3321,6 +3321,7 @@ const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
+scoreDiv.style.fontSize = "24px"
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
 const questionContainer = document.getElementById("questionContainer");
