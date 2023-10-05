@@ -3324,7 +3324,7 @@ const scoreDiv = document.getElementById("score");
 
 scoreDiv.style.fontSize = "20px"
 scoreDiv.style.border = "2px solid gold"; // Puedes ajustar el ancho del borde y el color (en este caso, "gold" para dorado)
-scoreDivstyle.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)"; // Puedes ajustar los valores de sombra
+scoreDiv.style.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)"; // Puedes ajustar los valores de sombra
 scoreDiv.style.color = "gold"; // Color del texto dorado
  
 const showQuestionBtn = document.getElementById("showQuestionBtn");
