@@ -295,6 +295,11 @@ input[type="checkbox"] {
     box-shadow: none; /* Elimina la sombra del botón */
 }
 
+#intro-header h1 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
 body {
 margin: 0;
 padding: 0;
