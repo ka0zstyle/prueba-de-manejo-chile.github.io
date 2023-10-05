@@ -421,7 +421,7 @@ body.dark-mode .question-container {
 
 #background-image {
     width: 100%; /* La imagen se ajustará al ancho del contenedor */
-    max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original */
+    max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original en dispositivos más grandes */
     height: auto; /* La altura se ajustará automáticamente */
 }
 
@@ -448,4 +448,9 @@ body.dark-mode .question-container {
     background-color: #0056b3;
 }
 
+@media (max-width: 768px) {
+    /* Estilos específicos para dispositivos móviles */
+    #background-image {
+        max-width: 100%; /* Aumenta el tamaño máximo para dispositivos móviles */
+    }
 }
