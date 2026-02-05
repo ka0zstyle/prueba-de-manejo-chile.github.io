@@ -3368,6 +3368,9 @@ const ANIMATION_DURATION = {
     SLOW: 500
 };
 
+// Delay for auto-randomization after initial render
+const INITIAL_RANDOMIZE_DELAY = 100;
+
 // Initialize total questions display
 totalQuestions.textContent = questions.length;
 
@@ -3545,11 +3548,13 @@ function useHint() {
             hint.className = 'multiple-answers-warning hint-message';
             hint.textContent = hintText;
             const fieldset = document.querySelector('fieldset');
-            fieldset.insertBefore(hint, fieldset.firstChild.nextSibling);
-            
-            powerUps.hint--;
-            usedPowerUps.hint = true;
-            updatePowerUpDisplay();
+            if (fieldset) {
+                fieldset.insertBefore(hint, fieldset.firstChild.nextSibling);
+                
+                powerUps.hint--;
+                usedPowerUps.hint = true;
+                updatePowerUpDisplay();
+            }
         }
     }
 }
@@ -3929,11 +3934,11 @@ generateQuiz(); // Genera la primera pregunta al cargar la página
 submitBtn.addEventListener("click", checkAnswers);
 nextBtn.addEventListener("click", loadNextQuestion);
 
-// Auto-randomize questions on page load (after initial render)
+// Auto-randomize questions on page load (after initial render to ensure DOM is ready)
 if (randomizeQuestionsBtn && !isRandomizing) {
     setTimeout(() => {
         randomizeQuestionsBtn.click();
-    }, 100);
+    }, INITIAL_RANDOMIZE_DELAY);
 }
 
     // Aquí puedes llamar a la función displayQuestionWithAnswer y otras operaciones una vez que el DOM esté cargado.
