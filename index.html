@@ -30,43 +30,83 @@
 
     <!-- Meta description for SEO -->
     <meta name="description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.">
+    <meta name="keywords" content="examen manejo chile, preguntas examen manejo chile, test de manejo chile, licencia de conducir chile, examen teórico manejo, prueba de manejo chile">
+    <meta name="author" content="Test de Manejo Chile">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://test-de-manejo-chile.netlify.app">
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Test de Manejo Chile - Practica tu Examen de Conducir">
+    <meta property="og:description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.">
+    <meta property="og:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png">
+    <meta property="og:url" content="https://test-de-manejo-chile.netlify.app">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Test de Manejo Chile - Practica tu Examen de Conducir">
+    <meta name="twitter:description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica.">
+    <meta name="twitter:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png">
 
     <!-- Schema markup for SEO -->
     <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
-      "@type": "Article",
-      "headline": "Cuestionario de Práctica para Licencia de Manejo en Chile",
-      "description": "Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://test-de-manejo-chile.netlify.app"
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Test de Manejo Chile",
+      "description": "Cuestionario de práctica para el examen de licencia de conducir en Chile. Preguntas sobre normas de tráfico y seguridad vial.",
+      "url": "https://test-de-manejo-chile.netlify.app",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "CLP"
       },
       "author": {
         "@type": "Person",
         "name": "Johandri Suarez"
       },
       "datePublished": "2023-10-04",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png",
-        "height": 800,
-        "width": 1200
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "https://test-de-manejo-chile.netlify.app",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png",
-          "width": 200,
-          "height": 60
+      "inLanguage": "es-CL"
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cómo puedo preparar mi examen de manejo en Chile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Puedes preparar tu examen de manejo practicando con nuestro cuestionario que contiene preguntas sobre normas de tráfico, señales de tránsito y seguridad vial en Chile."
         }
-      }
+      }, {
+        "@type": "Question",
+        "name": "¿Cuántas preguntas tiene el test de manejo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestro cuestionario de práctica contiene 280 preguntas oficiales del examen de conducir en Chile."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Es gratis el test de práctica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, nuestro test de práctica para el examen de manejo en Chile es completamente gratuito."
+        }
+      }]
     }
     </script>
 
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -124,6 +164,24 @@
                     <button id="randomizeQuestionsBtn" class="btn-secondary btn-full">
                         🔀 Preguntas Aleatorias
                     </button>
+                </div>
+
+                <div class="sidebar-section">
+                    <label class="sidebar-label">Comodines</label>
+                    <div class="powerups-container">
+                        <button id="fiftyFiftyBtn" class="powerup-btn" title="Eliminar 2 respuestas incorrectas">
+                            <span class="powerup-icon">50/50</span>
+                            <span class="powerup-count" id="fiftyFiftyCount">3</span>
+                        </button>
+                        <button id="skipBtn" class="powerup-btn" title="Saltar pregunta">
+                            <span class="powerup-icon">⏭️</span>
+                            <span class="powerup-count" id="skipCount">3</span>
+                        </button>
+                        <button id="hintBtn" class="powerup-btn" title="Mostrar pista">
+                            <span class="powerup-icon">💡</span>
+                            <span class="powerup-count" id="hintCount">3</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="sidebar-stats">

@@ -710,7 +710,7 @@ const questions = [
     },
     {
         number: 58,
-        question: "¿Cuáles 2 de los siguientes rasgos son característicos de personas que ceden con facilidad a la presión del grupo?, Marque dosMARQUE DOS RESPUESTAS: ",
+        question: "¿Cuáles 2 de los siguientes rasgos son característicos de personas que ceden con facilidad a la presión del grupo?",
         options: [
             "A) Por lo general, son muy inseguras de sí mismas.",
             "B) Sienten temor a ser motivo de bromas y risas de los demás.",
@@ -3285,6 +3285,19 @@ let score = 0; // Contador de puntuación
 const form = document.getElementById("quizForm");
 const randomizeQuestionsBtn = document.getElementById("randomizeQuestionsBtn");
 
+// Power-ups system
+let powerUps = {
+    fiftyFifty: 3,
+    skip: 3,
+    hint: 3
+};
+
+let usedPowerUps = {
+    fiftyFifty: false,
+    skip: false,
+    hint: false
+};
+
 // Variable para llevar un registro de si las preguntas se están mostrando de manera aleatoria o no.
 let isRandomizing = false;
 
@@ -3339,6 +3352,14 @@ const progressFill = document.getElementById("progressFill");
 const progressPercentage = document.getElementById("progressPercentage");
 const currentQuestionNum = document.getElementById("currentQuestionNum");
 const totalQuestions = document.getElementById("totalQuestions");
+
+// Power-ups buttons
+const fiftyFiftyBtn = document.getElementById("fiftyFiftyBtn");
+const skipBtn = document.getElementById("skipBtn");
+const hintBtn = document.getElementById("hintBtn");
+const fiftyFiftyCount = document.getElementById("fiftyFiftyCount");
+const skipCount = document.getElementById("skipCount");
+const hintCount = document.getElementById("hintCount");
 
 // Animation constants for consistency
 const ANIMATION_DURATION = {
@@ -3433,13 +3454,107 @@ function updateProgressBar() {
 function showMessageBox(messageBox) {
     messageBox.style.display = "block";
     messageBox.style.position = "fixed";
-    messageBox.style.animation = "modalSlideUp 0.3s ease";
+    messageBox.style.animation = "modalFadeIn 0.3s ease";
     
     // Limpia la animación cuando termine
     messageBox.addEventListener('animationend', function() {
         this.style.animation = '';
     }, { once: true });
 }
+
+// Trigger confetti for correct answers
+function triggerConfetti() {
+    if (typeof confetti !== 'undefined') {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+}
+
+// Show sad emoji for incorrect answers
+function showSadEmoji() {
+    const sadEmoji = document.createElement('div');
+    sadEmoji.className = 'sad-emoji';
+    sadEmoji.textContent = '😢';
+    document.body.appendChild(sadEmoji);
+    
+    setTimeout(() => {
+        sadEmoji.remove();
+    }, 500);
+}
+
+// Power-ups functions
+function updatePowerUpDisplay() {
+    fiftyFiftyCount.textContent = powerUps.fiftyFifty;
+    skipCount.textContent = powerUps.skip;
+    hintCount.textContent = powerUps.hint;
+    
+    fiftyFiftyBtn.disabled = powerUps.fiftyFifty === 0 || usedPowerUps.fiftyFifty;
+    skipBtn.disabled = powerUps.skip === 0;
+    hintBtn.disabled = powerUps.hint === 0 || usedPowerUps.hint;
+}
+
+function useFiftyFifty() {
+    if (powerUps.fiftyFifty > 0 && !usedPowerUps.fiftyFifty) {
+        const questionObj = questions[currentQuestion];
+        const checkboxes = document.querySelectorAll(`input[name='q${questionObj.number}']`);
+        const incorrectOptions = Array.from(checkboxes).filter(cb => 
+            !questionObj.correctAnswers.includes(cb.value)
+        );
+        
+        if (incorrectOptions.length >= 2) {
+            // Randomly select 2 incorrect options to remove
+            const shuffled = incorrectOptions.sort(() => 0.5 - Math.random());
+            const toRemove = shuffled.slice(0, 2);
+            
+            toRemove.forEach(checkbox => {
+                const label = checkbox.closest('label');
+                label.style.opacity = '0.3';
+                label.style.pointerEvents = 'none';
+                checkbox.disabled = true;
+            });
+            
+            powerUps.fiftyFifty--;
+            usedPowerUps.fiftyFifty = true;
+            updatePowerUpDisplay();
+        }
+    }
+}
+
+function useSkip() {
+    if (powerUps.skip > 0) {
+        powerUps.skip--;
+        updatePowerUpDisplay();
+        loadNextQuestion();
+    }
+}
+
+function useHint() {
+    if (powerUps.hint > 0 && !usedPowerUps.hint) {
+        const questionObj = questions[currentQuestion];
+        const hintText = `💡 Pista: Esta pregunta tiene ${questionObj.correctAnswers.length} respuesta(s) correcta(s)`;
+        
+        const existingHint = document.querySelector('.hint-message');
+        if (!existingHint) {
+            const hint = document.createElement('div');
+            hint.className = 'multiple-answers-warning hint-message';
+            hint.textContent = hintText;
+            const fieldset = document.querySelector('fieldset');
+            fieldset.insertBefore(hint, fieldset.firstChild.nextSibling);
+            
+            powerUps.hint--;
+            usedPowerUps.hint = true;
+            updatePowerUpDisplay();
+        }
+    }
+}
+
+// Power-ups event listeners
+fiftyFiftyBtn.addEventListener('click', useFiftyFifty);
+skipBtn.addEventListener('click', useSkip);
+hintBtn.addEventListener('click', useHint);
 
 
 function generateQuiz() {
@@ -3448,6 +3563,14 @@ function generateQuiz() {
     fieldset.innerHTML = `
         <legend class="question-title">${questionObj.number}. ${questionObj.question}</legend>
     `;
+
+    // Show warning banner if multiple correct answers (BEFORE user interacts)
+    if (questionObj.correctAnswers.length > 1) {
+        const warning = document.createElement('div');
+        warning.className = 'multiple-answers-warning';
+        warning.textContent = `⚠️ Esta pregunta tiene ${questionObj.correctAnswers.length} respuestas correctas`;
+        fieldset.appendChild(warning);
+    }
 
     if (questionObj.image) {
         const image = document.createElement("img");
@@ -3488,6 +3611,14 @@ if (questionObj.number === 242) {
     form.innerHTML = ""; // Limpia el formulario actual
     form.appendChild(fieldset);
     
+    // Reset power-ups usage for this question
+    usedPowerUps = {
+        fiftyFifty: false,
+        skip: false,
+        hint: false
+    };
+    updatePowerUpDisplay();
+    
     // Actualiza la barra de progreso
     updateProgressBar();
 }
@@ -3495,18 +3626,6 @@ if (questionObj.number === 242) {
 
 function checkAnswers() {
     const questionObj = questions[currentQuestion];
-    
-    // Check if question has multiple correct answers and show warning
-    if (questionObj.correctAnswers.length > 1) {
-        const existingWarning = document.querySelector('.multiple-answers-warning');
-        if (!existingWarning) {
-            const warning = document.createElement('div');
-            warning.className = 'multiple-answers-warning';
-            warning.textContent = `⚠️ Esta pregunta tiene ${questionObj.correctAnswers.length} respuestas correctas`;
-            const fieldset = document.querySelector('fieldset');
-            fieldset.insertBefore(warning, fieldset.firstChild.nextSibling);
-        }
-    }
 
     if (questionObj.number === 242) {
         const inputElements = document.querySelectorAll(`input[name^='q${questionObj.number}']`);
@@ -3523,6 +3642,7 @@ function checkAnswers() {
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
                 showMessageBox(messageBox);
+                showSadEmoji();
             }
             return;
         }
@@ -3540,6 +3660,7 @@ function checkAnswers() {
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
+                triggerConfetti();
             } else {
                 messageText.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
@@ -3547,6 +3668,7 @@ function checkAnswers() {
 
                 const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
                 messageText.innerHTML = `✗ Respuestas correctas:<br>${formattedCorrectAnswers}`;
+                showSadEmoji();
             }
 
             // Update message text and add next button
@@ -3607,10 +3729,12 @@ function checkAnswers() {
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
+                triggerConfetti();
             } else {
                 messageText.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
+                showSadEmoji();
             }
 
             // Add next button to message
@@ -3757,23 +3881,12 @@ function displayQuestionInModal(question) {
     // Crea un elemento para mostrar la pregunta
     const questionElement = document.createElement("p");
     questionElement.textContent = question.question;
+    questionElement.style.fontSize = "1.125rem";
+    questionElement.style.fontWeight = "600";
+    questionElement.style.marginTop = "1rem";
 
-    // Crea un elemento para mostrar las respuestas
-    const answersElement = document.createElement("ul");
-    question.options.forEach((option) => {
-        const answerItem = document.createElement("li");
-        answerItem.textContent = option;
-        answersElement.appendChild(answerItem);
-    });
-
-    // Crea un elemento para mostrar las respuestas correctas
-    const correctAnswersElement = document.createElement("p");
-    correctAnswersElement.innerHTML = "Respuestas Correctas:<br>" + question.correctAnswers.join(",<br>");
-
-    // Agrega la pregunta, las respuestas y las respuestas correctas al modal
+    // Agrega solo la pregunta al modal (sin opciones ni respuestas correctas)
     modalQuestionContainer.appendChild(questionElement);
-    modalQuestionContainer.appendChild(answersElement);
-    modalQuestionContainer.appendChild(correctAnswersElement);
 
     // Muestra el cuadro de pregunta modal
     questionModal.style.display = "block";
@@ -3812,6 +3925,14 @@ generateQuiz(); // Genera la primera pregunta al cargar la página
 
 submitBtn.addEventListener("click", checkAnswers);
 nextBtn.addEventListener("click", loadNextQuestion);
+
+// Auto-randomize questions on page load
+setTimeout(() => {
+    if (!isRandomizing) {
+        randomizeQuestionsBtn.click();
+    }
+}, 100);
+
     // Aquí puedes llamar a la función displayQuestionWithAnswer y otras operaciones una vez que el DOM esté cargado.
     // Asegúrate de que esta llamada se realice en el lugar adecuado dentro de tu flujo de trabajo.
 });

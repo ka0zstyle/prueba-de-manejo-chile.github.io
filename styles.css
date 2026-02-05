@@ -441,6 +441,7 @@ label.incorrect-answer {
   text-align: center;
   font-weight: 600;
   font-size: 0.9375rem;
+  animation: slideDown 0.3s ease;
 }
 
 body.dark-mode .multiple-answers-warning {
@@ -639,12 +640,12 @@ button {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
   padding: var(--space-xl);
   border-radius: var(--radius-xl);
   font-weight: 600;
   text-align: center;
-  animation: modalSlideUp 0.3s ease;
+  animation: modalFadeIn 0.3s ease;
   z-index: 2000;
   min-width: 320px;
   max-width: 500px;
@@ -825,6 +826,36 @@ button {
   }
 }
 
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-50%, -50%) rotate(-10deg); }
+  20%, 40%, 60%, 80% { transform: translate(-50%, -50%) rotate(10deg); }
+}
+
+/* ============================================
+   SAD EMOJI ANIMATION
+   ============================================ */
+
+.sad-emoji {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  z-index: 2001;
+  animation: shake 0.5s ease;
+  pointer-events: none;
+}
+
 /* ============================================
    COMPLETION MESSAGE
    ============================================ */
@@ -842,6 +873,59 @@ button {
   font-size: 2rem;
   margin: var(--space-lg) 0;
   color: var(--text-primary);
+}
+
+/* ============================================
+   POWER-UPS SYSTEM
+   ============================================ */
+
+.powerups-container {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: space-between;
+}
+
+.powerup-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  background: var(--bg-tertiary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.875rem;
+}
+
+.powerup-btn:hover:not(:disabled) {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.powerup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--bg-secondary);
+}
+
+.powerup-icon {
+  font-size: 1.5rem;
+  display: block;
+}
+
+.powerup-count {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.875rem;
+}
+
+.powerup-btn:disabled .powerup-count {
+  color: var(--text-tertiary);
 }
 
 /* ============================================
