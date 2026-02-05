@@ -3505,9 +3505,12 @@ function useFiftyFifty() {
         );
         
         if (incorrectOptions.length >= 2) {
-            // Randomly select 2 incorrect options to remove
-            const shuffled = incorrectOptions.sort(() => 0.5 - Math.random());
-            const toRemove = shuffled.slice(0, 2);
+            // Fisher-Yates shuffle for proper randomization
+            for (let i = incorrectOptions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [incorrectOptions[i], incorrectOptions[j]] = [incorrectOptions[j], incorrectOptions[i]];
+            }
+            const toRemove = incorrectOptions.slice(0, 2);
             
             toRemove.forEach(checkbox => {
                 const label = checkbox.closest('label');
@@ -3926,12 +3929,12 @@ generateQuiz(); // Genera la primera pregunta al cargar la página
 submitBtn.addEventListener("click", checkAnswers);
 nextBtn.addEventListener("click", loadNextQuestion);
 
-// Auto-randomize questions on page load
-setTimeout(() => {
-    if (!isRandomizing) {
+// Auto-randomize questions on page load (after initial render)
+if (randomizeQuestionsBtn && !isRandomizing) {
+    setTimeout(() => {
         randomizeQuestionsBtn.click();
-    }
-}, 100);
+    }, 100);
+}
 
     // Aquí puedes llamar a la función displayQuestionWithAnswer y otras operaciones una vez que el DOM esté cargado.
     // Asegúrate de que esta llamada se realice en el lugar adecuado dentro de tu flujo de trabajo.
