@@ -3341,10 +3341,16 @@ const fontSizeControl = document.getElementById("fontSizeControl");
 const startQuizButton = document.getElementById("start-quiz-button");
 const introHeader = document.getElementById("intro-header");
 
-// Agrega un controlador de eventos para el clic en el botón de inicio
+// Agrega un controlador de eventos para el clic en el botón de inicio con animación
 startQuizButton.addEventListener("click", function(event) {
     event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    introHeader.style.display = "none"; // Oculta el encabezado introductorio
+    
+    // Añade animación de salida suave
+    introHeader.style.animation = "fadeOut 0.3s ease-out forwards";
+    
+    setTimeout(() => {
+        introHeader.style.display = "none"; // Oculta el encabezado introductorio
+    }, 300); // Espera a que termine la animación
 });
 
 fontSizeControl.addEventListener("input", () => {
@@ -3401,6 +3407,32 @@ if (isDarkMode) {
 
 scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
 
+// Función para actualizar la barra de progreso
+function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    let progressBar = document.querySelector('.progress-bar');
+    
+    if (!progressBar) {
+        // Crear barra de progreso si no existe
+        progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressBar.innerHTML = '<div class="progress-fill"></div>';
+        
+        const container = document.querySelector('.container');
+        const heading = container.querySelector('h2');
+        heading.after(progressBar);
+    }
+    
+    const progressFill = progressBar.querySelector('.progress-fill');
+    progressFill.style.width = `${progress}%`;
+}
+
+// Función para mostrar mensaje con animación
+function showMessageBox(messageBox) {
+    messageBox.style.display = "block";
+    messageBox.style.animation = "slideDown 0.3s ease-out";
+}
+
 
 function generateQuiz() {
     const questionObj = questions[currentQuestion];
@@ -3447,6 +3479,9 @@ if (questionObj.number === 242) {
 
     form.innerHTML = ""; // Limpia el formulario actual
     form.appendChild(fieldset);
+    
+    // Actualiza la barra de progreso
+    updateProgressBar();
 }
 
 
@@ -3547,25 +3582,36 @@ function arraysEqual(arr1, arr2) {
 function loadNextQuestion() {
     currentQuestion++;
     if (currentQuestion < questions.length) {
-        form.innerHTML = ""; // Limpia el formulario actual
-        generateQuiz(); // Genera la siguiente pregunta
+        // Añade animación de salida suave
+        form.style.animation = "fadeOut 0.2s ease-out";
+        
+        setTimeout(() => {
+            form.innerHTML = ""; // Limpia el formulario actual
+            generateQuiz(); // Genera la siguiente pregunta
+            
+            // Añade animación de entrada suave
+            form.style.animation = "fadeIn 0.3s ease-in";
+            
+            // Scroll suave hacia arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Limpia los elementos de resultado
-        const resultContainer = document.getElementById("result");
-        const questionNumber = resultContainer.querySelector(".question-number");
-        const resultText = resultContainer.querySelector(".result-text");
-        const correctAnswerText = resultContainer.querySelector(".correct-answer");
-        questionNumber.textContent = "";
-        resultText.textContent = "";
-        correctAnswerText.textContent = "";
+            // Limpia los elementos de resultado
+            const resultContainer = document.getElementById("result");
+            const questionNumber = resultContainer.querySelector(".question-number");
+            const resultText = resultContainer.querySelector(".result-text");
+            const correctAnswerText = resultContainer.querySelector(".correct-answer");
+            questionNumber.textContent = "";
+            resultText.textContent = "";
+            correctAnswerText.textContent = "";
 
-        submitBtn.style.display = "block";
-        nextBtn.style.display = "none";
+            submitBtn.style.display = "block";
+            nextBtn.style.display = "none";
 
-        // Agrega esta línea para borrar el mensaje de respuesta
-        const messageBox = document.getElementById("messageBox");
-        messageBox.style.display = "none";
-        messageBox.classList.remove("error");
+            // Agrega esta línea para borrar el mensaje de respuesta
+            const messageBox = document.getElementById("messageBox");
+            messageBox.style.display = "none";
+            messageBox.classList.remove("error");
+        }, 200);
     } else {
         resultDiv.textContent = `¡Has completado el cuestionario! Puntuación final: ${score}/${questions.length}`;
         submitBtn.style.display = "none";
