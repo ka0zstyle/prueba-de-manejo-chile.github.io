@@ -120,8 +120,8 @@ h2 {
 
 #nextButtonContainer {
     text-align: center;
-    font-weight: bold;
-    font-family: ;
+    font-weight: 600;
+    margin: 1rem 0;
 }
 
 /* Modern Fieldset - Card Style */
@@ -284,18 +284,19 @@ button:active {
 
 #submitBtnxContainer {
   text-align: center;
-  margin-top: 20px; /* Ajusta el margen superior según tus preferencias */
+  margin-top: 1.5rem;
 }
 
-/* Estilos para centrar el botón "Enviar Respuestas" */
+/* Modern button container */
 .submit-button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.75rem;
 }
 
 .submit-button-container button {
-    margin-top: 10px; /* Ajusta el espacio entre los botones si es necesario */
+    min-width: 200px;
 }
 
 /* Modern Message Box */
@@ -863,5 +864,96 @@ input[type="text"]:focus {
 
 .loading {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Image Styles with Modern Effects */
+fieldset img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    margin: 1rem 0;
+}
+
+fieldset img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Question Modal Images */
+#questionModal img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Smooth transitions for all interactive elements */
+input, button, label, fieldset, .menu-option {
+    transition: all var(--transition-base);
+}
+
+/* Focus styles for accessibility */
+input:focus,
+button:focus,
+a:focus {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* Improve text selection */
+::selection {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+/* Add subtle animation to score display */
+#score {
+    transition: all var(--transition-base);
+}
+
+#score:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Completion Message Styles */
+.completion-message {
+    background: linear-gradient(135deg, var(--background-white), var(--background-light));
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    margin: 2rem 0;
+    border: 2px solid var(--border-color);
+}
+
+.completion-message h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.dark-mode .completion-message {
+    background: linear-gradient(135deg, var(--dark-surface), var(--dark-bg));
+    border-color: #475569;
+}
+
+/* Subtle gradient animation for backgrounds */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
 }
 

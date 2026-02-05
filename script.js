@@ -3613,7 +3613,51 @@ function loadNextQuestion() {
             messageBox.classList.remove("error");
         }, 200);
     } else {
-        resultDiv.textContent = `¡Has completado el cuestionario! Puntuación final: ${score}/${questions.length}`;
+        // Quiz completado - muestra resultado con animación
+        form.style.animation = "fadeOut 0.3s ease-out";
+        
+        setTimeout(() => {
+            form.innerHTML = "";
+            
+            // Crea un mensaje de finalización más atractivo
+            const completionMessage = document.createElement('div');
+            completionMessage.className = 'completion-message';
+            completionMessage.style.animation = "fadeIn 0.5s ease-in";
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            let emoji = "🎉";
+            let message = "¡Excelente trabajo!";
+            
+            if (percentage >= 90) {
+                emoji = "🏆";
+                message = "¡Perfecto! Estás listo para el examen.";
+            } else if (percentage >= 70) {
+                emoji = "🎯";
+                message = "¡Muy bien! Vas por buen camino.";
+            } else if (percentage >= 50) {
+                emoji = "📚";
+                message = "Buen intento. Sigue practicando.";
+            } else {
+                emoji = "💪";
+                message = "No te rindas. La práctica hace al maestro.";
+            }
+            
+            completionMessage.innerHTML = `
+                <div style="font-size: 4rem; margin-bottom: 1rem;">${emoji}</div>
+                <h2 style="margin-bottom: 1rem;">${message}</h2>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">
+                    ${score}/${questions.length}
+                </div>
+                <div style="font-size: 1.5rem; margin-bottom: 2rem;">
+                    ${percentage}% de respuestas correctas
+                </div>
+            `;
+            
+            form.appendChild(completionMessage);
+            
+            resultDiv.textContent = "";
+        }, 300);
+        
         submitBtn.style.display = "none";
         nextBtn.style.display = "none";
     }
