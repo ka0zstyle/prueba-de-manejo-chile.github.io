@@ -5,7 +5,7 @@
 
 :root {
   /* Base Typography */
-  --base-font-size: 16px;
+  --base-font-size: 14px;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   
   /* Color System - Light Mode */
@@ -91,9 +91,10 @@ body {
   font-family: var(--font-family);
   background: var(--bg-secondary);
   color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
+  line-height: 1.5;
+  overflow: hidden;
   transition: background-color var(--transition-base), color var(--transition-base);
+  height: 100vh;
 }
 
 /* ============================================
@@ -266,8 +267,10 @@ body {
 .main-content {
   margin-left: var(--sidebar-width);
   margin-top: var(--header-height);
-  padding: var(--space-xl);
-  min-height: calc(100vh - var(--header-height));
+  padding: var(--space-md);
+  height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+  overflow-x: hidden;
   transition: margin-left var(--transition-base);
 }
 
@@ -281,18 +284,18 @@ body {
 
 .progress-container {
   background: var(--bg-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  margin-bottom: var(--space-md);
   box-shadow: var(--shadow-sm);
 }
 
 .progress-bar {
-  height: 12px;
+  height: 6px;
   background: var(--bg-tertiary);
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .progress-fill {
@@ -320,8 +323,8 @@ body {
 
 .quiz-container {
   background: var(--bg-primary);
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-md);
   max-width: 1000px;
   margin: 0 auto;
@@ -330,12 +333,13 @@ body {
 .score-display {
   background: var(--primary-light);
   color: var(--primary);
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 0.875rem;
+  font-weight: 600;
   text-align: center;
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-xl);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  display: inline-block;
 }
 
 /* Fieldset (Question Container) */
@@ -343,8 +347,8 @@ fieldset {
   background: var(--bg-secondary);
   border: 2px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-xl);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
   transition: all var(--transition-base);
 }
 
@@ -354,26 +358,29 @@ fieldset:hover {
 }
 
 fieldset legend {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  padding: var(--space-sm) var(--space-lg);
-  background: white;
-  border: 2px solid var(--border);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, var(--primary-light), #bfdbfe);
+  border: 2px solid var(--primary);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
 }
 
 body.dark-mode fieldset legend {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+  color: white;
+  border-color: var(--primary-light);
 }
 
 fieldset img {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-md);
-  margin: var(--space-lg) 0;
+  margin: var(--space-md) auto;
+  display: block;
   box-shadow: var(--shadow-sm);
 }
 
@@ -381,14 +388,14 @@ fieldset img {
 label {
   display: flex;
   align-items: center;
-  padding: var(--space-lg);
-  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-sm);
   background: var(--bg-primary);
   border: 2px solid var(--border);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--text-primary);
 }
 
@@ -396,6 +403,16 @@ label:hover {
   border-color: var(--primary);
   background: var(--primary-light);
   transform: translateX(4px);
+}
+
+label.correct-answer {
+  border-color: var(--success);
+  background: #d1fae5;
+}
+
+label.incorrect-answer {
+  border-color: var(--error);
+  background: #fee2e2;
 }
 
 /* Checkbox Styling */
@@ -586,31 +603,62 @@ button {
    ============================================ */
 
 .message-box {
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  margin-top: var(--space-xl);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
   font-weight: 600;
   text-align: center;
-  animation: slideDown 0.3s ease;
+  animation: modalSlideUp 0.3s ease;
+  z-index: 2000;
+  min-width: 320px;
+  max-width: 500px;
+  box-shadow: var(--shadow-xl);
+}
+
+.message-box::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  animation: fadeIn 0.3s ease;
 }
 
 .message-box:not(.error) {
-  background: var(--success);
-  color: white;
+  background: white;
+  border: 3px solid var(--success);
+}
+
+.message-box:not(.error) .message-text {
+  color: var(--success);
 }
 
 .message-box.error {
-  background: var(--error);
-  color: white;
+  background: white;
+  border: 3px solid var(--error);
+}
+
+.message-box.error .message-text {
+  color: var(--error);
+}
+
+.message-text {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 .result-display {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-md);
   text-align: center;
 }
 
 .result-text {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   margin: var(--space-sm) 0;
 }
@@ -784,18 +832,21 @@ button {
   
   .main-content {
     margin-left: 0;
+    padding: var(--space-sm);
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
   }
   
   .quiz-container {
-    padding: var(--space-lg);
+    padding: var(--space-sm);
   }
   
   .intro-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   
   .header-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
   
   .action-buttons {
@@ -805,19 +856,43 @@ button {
   .action-buttons button {
     width: 100%;
   }
+  
+  fieldset {
+    padding: var(--space-sm);
+  }
+  
+  fieldset legend {
+    font-size: 1rem;
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  label {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.875rem;
+  }
+  
+  .message-box {
+    min-width: 280px;
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 480px) {
+  body {
+    overflow: hidden;
+  }
+  
   .main-content {
-    padding: var(--space-md);
+    padding: var(--space-xs);
+    overflow-y: auto;
   }
   
   .quiz-container {
-    padding: var(--space-md);
+    padding: var(--space-xs);
   }
   
   .intro-content {
-    padding: var(--space-xl);
+    padding: var(--space-md);
   }
   
   fieldset {

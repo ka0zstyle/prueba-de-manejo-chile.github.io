@@ -3432,7 +3432,8 @@ function updateProgressBar() {
 // Función para mostrar mensaje con animación
 function showMessageBox(messageBox) {
     messageBox.style.display = "block";
-    messageBox.style.animation = `slideDown ${ANIMATION_DURATION.BASE}ms ease-out`;
+    messageBox.style.position = "fixed";
+    messageBox.style.animation = "modalSlideUp 0.3s ease";
     
     // Limpia la animación cuando termine
     messageBox.addEventListener('animationend', function() {
@@ -3494,6 +3495,18 @@ if (questionObj.number === 242) {
 
 function checkAnswers() {
     const questionObj = questions[currentQuestion];
+    
+    // Check if question has multiple correct answers and show warning
+    if (questionObj.correctAnswers.length > 1) {
+        const existingWarning = document.querySelector('.multiple-answers-warning');
+        if (!existingWarning) {
+            const warning = document.createElement('div');
+            warning.className = 'multiple-answers-warning';
+            warning.textContent = `⚠️ Esta pregunta tiene ${questionObj.correctAnswers.length} respuestas correctas`;
+            warning.style.cssText = 'background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center; font-weight: 600;';
+            document.querySelector('fieldset').insertBefore(warning, document.querySelector('fieldset').firstChild.nextSibling);
+        }
+    }
 
     if (questionObj.number === 242) {
         const inputElements = document.querySelectorAll(`input[name^='q${questionObj.number}']`);
@@ -3509,7 +3522,7 @@ function checkAnswers() {
                 messageText.textContent = "Debes llenar todos los campos correctamente.";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-                messageBox.style.display = "block";
+                showMessageBox(messageBox);
             }
             return;
         }
@@ -3523,23 +3536,32 @@ function checkAnswers() {
             const messageText = messageBox.querySelector(".message-text");
 
             if (isCorrect) {
-                messageText.textContent = "Respuesta Correcta";
+                messageText.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
             } else {
-                messageText.textContent = "Respuesta Incorrecta";
+                messageText.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
 
                 const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
-                messageText.innerHTML = `Respuestas correctas:<br>${formattedCorrectAnswers}`;
+                messageText.innerHTML = `✗ Respuestas correctas:<br>${formattedCorrectAnswers}`;
             }
 
-            messageBox.style.display = "block";
+            // Move next button inside modal
+            messageBox.innerHTML = messageText.outerHTML;
+            const nextBtnClone = nextBtn.cloneNode(true);
+            nextBtnClone.style.display = "inline-block";
+            nextBtnClone.style.marginTop = "1rem";
+            nextBtnClone.onclick = function() {
+                messageBox.style.display = "none";
+                loadNextQuestion();
+            };
+            messageBox.appendChild(nextBtnClone);
+
+            showMessageBox(messageBox);
             submitBtn.style.display = "none";
-            nextBtn.style.display = "block";
-            nextBtn.style.margin = "0 auto";
             scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
         }
     } else {
@@ -3549,29 +3571,61 @@ function checkAnswers() {
 
         const isCorrect = arraysEqual(userAnswers, correctAnswers);
 
+        // Add visual feedback to options
+        const allCheckboxes = document.querySelectorAll(`input[name='q${questionObj.number}']`);
+        allCheckboxes.forEach(checkbox => {
+            const label = checkbox.closest('label');
+            const isChecked = checkbox.checked;
+            const isCorrectOption = correctAnswers.includes(checkbox.value);
+            
+            if (isChecked && !isCorrectOption) {
+                // User selected wrong answer - show X
+                label.classList.add('incorrect-answer');
+                const xMark = document.createElement('span');
+                xMark.textContent = ' ✗';
+                xMark.style.cssText = 'color: #ef4444; font-weight: bold; font-size: 1.5rem; margin-left: auto;';
+                label.appendChild(xMark);
+            }
+            
+            if (isCorrectOption) {
+                // Show correct answer with checkmark
+                label.classList.add('correct-answer');
+                const checkMark = document.createElement('span');
+                checkMark.textContent = ' ✓';
+                checkMark.style.cssText = 'color: #10b981; font-weight: bold; font-size: 1.5rem; margin-left: auto;';
+                label.appendChild(checkMark);
+            }
+        });
+
         const messageBox = document.getElementById("messageBox");
 
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
 
             if (isCorrect) {
-                messageText.textContent = "Respuesta Correcta";
+                messageText.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
             } else {
-                messageText.textContent = "Respuesta Incorrecta";
+                messageText.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-
-                const formattedCorrectAnswers = correctAnswers.map(option => `${option}`).join('<br>');
-                messageText.innerHTML = `Respuestas correctas:<br>${formattedCorrectAnswers}`;
             }
 
-            messageBox.style.display = "block";
+            // Move next button inside modal
+            messageBox.innerHTML = messageText.outerHTML;
+            const nextBtnClone = nextBtn.cloneNode(true);
+            nextBtnClone.style.display = "inline-block";
+            nextBtnClone.style.marginTop = "1rem";
+            nextBtnClone.onclick = function() {
+                messageBox.style.display = "none";
+                loadNextQuestion();
+            };
+            messageBox.appendChild(nextBtnClone);
+
+            showMessageBox(messageBox);
             submitBtn.style.display = "none";
-            nextBtn.style.display = "block";
-            nextBtn.style.margin = "0 auto";
             scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
         }
     }
