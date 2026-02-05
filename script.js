@@ -9,7 +9,8 @@ const questions = [
             "C) Usar su freno de mano.",
             "D) Consultar con su mecánico lo antes posible."    ],
                image: false,
-        correctAnswers: ["D) Consultar con su mecánico lo antes posible."]},
+        correctAnswers: ["D) Consultar con su mecánico lo antes posible."],
+        hint: "Un desvío al frenar indica un problema mecánico serio que requiere revisión profesional"},
     
     
     {number: 2,
@@ -19,7 +20,8 @@ const questions = [
             "C) Frenos mal ajustados.",
             "D) Neumáticos con presión de aire inadecuada."],
                image: false,
-        correctAnswers: ["C) Frenos mal ajustados."]},
+        correctAnswers: ["C) Frenos mal ajustados."],
+        hint: "Piense en qué parte del sistema de frenos causaría un desequilibrio entre las ruedas"},
     
     
     {number: 3,
@@ -29,7 +31,8 @@ const questions = [
             "C) Continuar porque sabe que se detendrá algunos kilómetros más allá.",
             "D) Detenerse e investigar el problema."],
                image: false,
-        correctAnswers: ["D) Detenerse e investigar el problema."]},
+        correctAnswers: ["D) Detenerse e investigar el problema."],
+        hint: "Un olor fuerte a gasolina puede indicar una fuga peligrosa que requiere atención inmediata"},
     
     
     {number: 4,
@@ -39,7 +42,8 @@ const questions = [
             "C) Usando gasolina sin plomo.",
             "D) Revisando su vehículo ante cualquier olor a gasolina extraño."],
                image: false,
-        correctAnswers: ["D) Revisando su vehículo ante cualquier olor a gasolina extraño."]},
+        correctAnswers: ["D) Revisando su vehículo ante cualquier olor a gasolina extraño."],
+        hint: "La prevención de incendios está relacionada con detectar fugas de combustible"},
     
     
     {number: 5,
@@ -49,7 +53,8 @@ const questions = [
             "C) Para poder efectuar los cambios de marcha más rápidamente.",
             "D) Para poder caminar sin problemas en el caso que necesite solicitar ayuda."],
                image: false,
-        correctAnswers: ["A) Para tener un adecuado control de los pedales."]},
+        correctAnswers: ["A) Para tener un adecuado control de los pedales."],
+        hint: "La respuesta correcta se enfoca en la seguridad durante la conducción, no después"},
     
     
     {number: 6,
@@ -59,7 +64,8 @@ const questions = [
             "C) Una columna de dirección colapsable.",
             "D) Un asiento con apoya-cabeza ajustado en forma apropiada."],
                 image: false,
-        correctAnswers: ["D) Un asiento con apoya-cabeza ajustado en forma apropiada."]},
+        correctAnswers: ["D) Un asiento con apoya-cabeza ajustado en forma apropiada."],
+        hint: "Piense en qué elemento protege específicamente la zona del cuello"},
     
     
     {number: 7,
@@ -68,9 +74,9 @@ const questions = [
             "B) Intermitentes de advertencia de peligro.",
             "C) Luces altas.",
             "D) Freno de mano puesto."],
-        image: true
-        ,
-        correctAnswers: ["B) Intermitentes de advertencia de peligro."]},
+        image: true,
+        correctAnswers: ["B) Intermitentes de advertencia de peligro."],
+        hint: "Observe la forma del símbolo - dos flechas indica intermitentes"},
     
     
     {number: 8,
@@ -80,7 +86,8 @@ const questions = [
             "C) Cuando los neumáticos están fríos.",
             "D) Cuando los neumáticos están calientes."],
                 image: false,
-        correctAnswers: ["C) Cuando los neumáticos están fríos."]},
+        correctAnswers: ["C) Cuando los neumáticos están fríos."],
+        hint: "Para una medición precisa, la temperatura de los neumáticos debe ser estable"},
     
     
     {number: 9,
@@ -88,10 +95,9 @@ const questions = [
         options: ["A) Cuando los neumáticos están fríos.",
             "B) Cuando los neumáticos están calientes.",
             "C) En cualquier momento, porque da igual que los neumáticos estén fríos o calientes."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) Cuando los neumáticos están fríos."]},
+        image: false,
+        correctAnswers: ["A) Cuando los neumáticos están fríos."],
+        hint: "El calor afecta la presión del aire, necesitamos condiciones estándar para medir"},
     
     
     {number: 10,
@@ -100,10 +106,9 @@ const questions = [
             "B) El anticongelante.",
             "C) El agua de la batería.",
             "D) El líquido refrigerante."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) El líquido de freno."]},
+        image: false,
+        correctAnswers: ["A) El líquido de freno."],
+        hint: "Piense en qué sistema es crítico para detener el vehículo de forma segura"},
     
     
     {number: 11,
@@ -112,10 +117,9 @@ const questions = [
             "B) Frenando suavemente, presionando el pedal de embrague y tirando el freno de mano justo antes de detenerse.",
             "C) Poniendo la palanca de cambio en neutro, frenando fuerte y luego soltando el freno justo antes de detenerse.",
             "D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."]},
+        image: false,
+        correctAnswers: ["D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."],
+        hint: "Una técnica de frenado suave y gradual es la más segura y cómoda"},
     
     
     {number: 12,
@@ -124,10 +128,9 @@ const questions = [
             "B) Cuando se estacione en doble fila respecto a otro vehículo estacionado junto a la cuneta.",
             "C) Cuando estacione junto a una cuneta en la que hay línea amarilla pintada.",
             "D) Cuando sus señalizadores de viraje no estén funcionando."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) Cuando esté en pana obstruyendo el tránsito."]},
+        image: false,
+        correctAnswers: ["A) Cuando esté en pana obstruyendo el tránsito."],
+        hint: "Las luces de peligro se usan cuando el vehículo representa un obstáculo inesperado"},
     
     
     {number: 13,
@@ -136,10 +139,9 @@ const questions = [
             "B) Para advertir a quienes vienen detrás de un peligro que hay más adelante.",
             "C) Para advertir a quienes vienen detrás suyo que usted pretende virar.",
             "D) Para advertir a los demás que usted tiene prisa."],
-        image: false
-        ,
-        
-        correctAnswers: ["B) Para advertir a quienes vienen detrás de un peligro que hay más adelante."]},
+        image: false,
+        correctAnswers: ["B) Para advertir a quienes vienen detrás de un peligro que hay más adelante."],
+        hint: "Las luces de peligro alertan sobre situaciones de emergencia o peligro inminente"},
     
     
     {number: 14,
@@ -148,10 +150,9 @@ const questions = [
             "B) Cuando esté siendo remolcado.",
             "C) Cuando esté retrocediendo en una calle de poco tránsito.",
             "D) Cuando esté en pana y obstaculizando el tránsito."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Cuando esté en pana y obstaculizando el tránsito."]},
+        image: false,
+        correctAnswers: ["D) Cuando esté en pana y obstaculizando el tránsito."],
+        hint: "Las luces de peligro se activan cuando el vehículo está detenido bloqueando la vía"},
     
     
     {number: 15,
@@ -160,10 +161,9 @@ const questions = [
             "B) Neumáticos poco inflados.",
             "C) Volante de dirección no centrado.",
             "D) Amortiguadores gastados."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Amortiguadores gastados."]},
+        image: false,
+        correctAnswers: ["D) Amortiguadores gastados."],
+        hint: "El rebote o balanceo excesivo indica problemas en el sistema de suspensión"},
     
     
     {number: 16,
@@ -172,10 +172,9 @@ const questions = [
             "B) Para no desgastar el motor.",
             "C) Para ayudar a evitar que el automóvil se roncee.",
             "D) Para evitar que el automóvil se incline hacia un lado."],
-        image: false
-        ,
-        
-        correctAnswers: ["C) Para ayudar a evitar que el automóvil se roncee."]},
+        image: false,
+        correctAnswers: ["C) Para ayudar a evitar que el automóvil se roncee."],
+        hint: "La presión correcta mejora la estabilidad y tracción del vehículo en la carretera"},
     
     
     {number: 17,
@@ -184,10 +183,9 @@ const questions = [
             "B) Aceleraciones en curvas.",
             "C) Frecuentes frenadas y aceleraciones.",
             "D) Conducción en marchas altas."],
-        image: false
-        ,
-        
-        correctAnswers: ["C) Frecuentes frenadas y aceleraciones."]},
+        image: false,
+        correctAnswers: ["C) Frecuentes frenadas y aceleraciones."],
+        hint: "Los cambios bruscos de velocidad consumen más combustible que la conducción suave"},
     
     
     {number: 18,
@@ -196,10 +194,9 @@ const questions = [
             "B) 4.0 mm",
             "C) 1.6 mm",
             "D) 1.0 mm"],
-        image: false
-        ,
-        
-        correctAnswers: ["C) 1.6 mm"]},
+        image: false,
+        correctAnswers: ["C) 1.6 mm"],
+        hint: "Existe un mínimo legal establecido para garantizar la seguridad del agarre"},
     
     
     {number: 19,
@@ -209,11 +206,10 @@ const questions = [
             "C) Detenerse lentamente al costado de la vía.",
             "D) Detener el vehículo frenando lo más fuerte que pueda.",
             "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."],
-        image: false
-        ,
-        
+        image: false,
         correctAnswers: ["C) Detenerse lentamente al costado de la vía.", 
-    "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."]},
+    "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."],
+        hint: "Mantenga el control y busque un lugar seguro - esta pregunta tiene 2 respuestas correctas"},
     
     
     {number: 20,
@@ -223,11 +219,10 @@ const questions = [
             "C) Frenar rápida y firmemente.",
             "D) Sostener firmemente el volante manteniendo la trayectoria.",
             "E) Sostener el volante con una mano advirtiendo con la otra a los demás que usted se detendrá."],
-        image: false
-        ,
-        
+        image: false,
         correctAnswers: ["B) Frenar suavemente o dejar que el vehículo siga hasta detenerse.", 
-    "D) Sostener firmemente el volante manteniendo la trayectoria."]},
+    "D) Sostener firmemente el volante manteniendo la trayectoria."],
+        hint: "Controle el volante y frene suavemente - esta pregunta tiene 2 respuestas correctas"},
     
     
      {number: 21,
@@ -710,7 +705,7 @@ const questions = [
     },
     {
         number: 58,
-        question: "¿Cuáles 2 de los siguientes rasgos son característicos de personas que ceden con facilidad a la presión del grupo?, Marque dosMARQUE DOS RESPUESTAS: ",
+        question: "¿Cuáles 2 de los siguientes rasgos son característicos de personas que ceden con facilidad a la presión del grupo?",
         options: [
             "A) Por lo general, son muy inseguras de sí mismas.",
             "B) Sienten temor a ser motivo de bromas y risas de los demás.",
@@ -3282,28 +3277,21 @@ const questions = [
 let currentQuestion = 0;
 let messageText;
 let score = 0; // Contador de puntuación
+let strikes = 3; // Strike system - starts with 3
 const form = document.getElementById("quizForm");
-const randomizeQuestionsBtn = document.getElementById("randomizeQuestionsBtn");
 
-// Variable para llevar un registro de si las preguntas se están mostrando de manera aleatoria o no.
-let isRandomizing = false;
+// Power-ups system
+const INITIAL_POWERUP_COUNT = 3;
 
-// Evento de clic para el botón de alternancia
-randomizeQuestionsBtn.addEventListener("click", () => {
-  if (isRandomizing) {
-    // Si las preguntas se están mostrando de manera aleatoria, restablece la página.
-    window.location.reload();
-  } else {
-    // Si no se están mostrando de manera aleatoria, mezcla las preguntas y comienza desde el principio.
-    shuffleQuestions();
-    currentQuestion = 0;
-    score = 0;
-    updateScoreDisplay();
-    generateQuiz();
-    randomizeQuestionsBtn.textContent = "Restablecer Cuestionario";
-  }
-  isRandomizing = !isRandomizing;
-});
+let powerUps = {
+    fiftyFifty: INITIAL_POWERUP_COUNT,
+    hint: INITIAL_POWERUP_COUNT
+};
+
+let usedPowerUps = {
+    fiftyFifty: false,
+    hint: false
+};
 
 // Función para mezclar las preguntas de manera aleatoria
 function shuffleQuestions() {
@@ -3311,6 +3299,17 @@ function shuffleQuestions() {
     const j = Math.floor(Math.random() * (i + 1));
     [questions[i], questions[j]] = [questions[j], questions[i]];
   }
+}
+
+// Function to initialize randomization
+function initializeRandomization() {
+    shuffleQuestions();
+    currentQuestion = 0;
+    score = 0;
+    updateScoreDisplay();
+    generateQuiz();
+    randomizeQuestionsBtn.textContent = "Restablecer Cuestionario";
+    isRandomizing = true;
 }
 
 // Función para actualizar la pantalla de puntuación
@@ -3321,85 +3320,402 @@ const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
+const strikeDisplay = document.getElementById("strike-display");
 
-scoreDiv.style.fontSize = "20px"
-scoreDiv.style.border = "2px solid gold"; // Puedes ajustar el ancho del borde y el color (en este caso, "gold" para dorado)
-scoreDiv.style.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)"; // Puedes ajustar los valores de sombra
-scoreDiv.style.color = "gold"; // Color del texto dorado
- 
+// Leaderboard elements
+const leaderboardModal = document.getElementById("leaderboardModal");
+const closeLeaderboard = document.getElementById("closeLeaderboard");
+const leaderboardContent = document.getElementById("leaderboardContent");
+
+// Leaderboard functions
+function getLeaderboard() {
+    const data = localStorage.getItem('drivingTestLeaderboard');
+    return data ? JSON.parse(data) : [];
+}
+
+function saveLeaderboard(leaderboard) {
+    localStorage.setItem('drivingTestLeaderboard', JSON.stringify(leaderboard));
+}
+
+function isTopScore(score) {
+    const leaderboard = getLeaderboard();
+    return leaderboard.length < 10 || score > leaderboard[leaderboard.length - 1].score;
+}
+
+function addToLeaderboard(name, score) {
+    const leaderboard = getLeaderboard();
+    const date = new Date().toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
+    leaderboard.push({ name, score, date });
+    leaderboard.sort((a, b) => b.score - a.score);
+    if (leaderboard.length > 10) {
+        leaderboard.length = 10;
+    }
+    saveLeaderboard(leaderboard);
+}
+
+function showLeaderboard(highlightScore = null) {
+    const leaderboard = getLeaderboard();
+    
+    if (leaderboard.length === 0) {
+        leaderboardContent.innerHTML = '<div class="leaderboard-empty">No hay puntuaciones todavía. ¡Sé el primero!</div>';
+    } else {
+        let html = '<table class="leaderboard-table"><thead><tr><th>Pos</th><th>Nombre</th><th>Puntos</th><th>Fecha</th></tr></thead><tbody>';
+        
+        leaderboard.forEach((entry, index) => {
+            const isCurrentPlayer = highlightScore !== null && 
+                entry.score === highlightScore.score && 
+                entry.name === highlightScore.name;
+            const rankClass = index === 0 ? 'top-1' : index === 1 ? 'top-2' : index === 2 ? 'top-3' : '';
+            const rowClass = isCurrentPlayer ? 'current-player' : '';
+            
+            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : (index + 1);
+            
+            html += `
+                <tr class="${rowClass}">
+                    <td class="leaderboard-rank ${rankClass}">${medal}</td>
+                    <td class="leaderboard-name">${entry.name}</td>
+                    <td class="leaderboard-score">${entry.score}/${questions.length}</td>
+                    <td class="leaderboard-date">${entry.date || ''}</td>
+                </tr>
+            `;
+        });
+        
+        html += '</tbody></table>';
+        leaderboardContent.innerHTML = html;
+    }
+    
+    leaderboardModal.style.display = 'block';
+}
+
+function promptForName(score) {
+    const messageBox = document.getElementById("messageBox");
+    if (messageBox) {
+        const messageText = messageBox.querySelector(".message-text");
+        messageText.innerHTML = '';
+        
+        const namePrompt = document.createElement('div');
+        namePrompt.innerHTML = `
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🏆</div>
+            <div style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">¡Felicidades!</div>
+            <div style="font-size: 1rem; margin-bottom: 1rem;">Has logrado entrar en el Top 10</div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem;">${score}/${questions.length} correctas</div>
+            <input type="text" id="playerName" class="name-input" placeholder="Ingresa tu nombre" maxlength="20" />
+        `;
+        
+        messageText.appendChild(namePrompt);
+        
+        const submitNameBtn = document.createElement('button');
+        submitNameBtn.className = 'btn-primary';
+        submitNameBtn.textContent = 'Guardar';
+        submitNameBtn.style.display = 'inline-flex';
+        submitNameBtn.onclick = function() {
+            const playerNameInput = document.getElementById('playerName');
+            const rawName = playerNameInput.value.trim();
+            // Sanitize input - only allow letters, numbers, and spaces
+            const playerName = rawName.replace(/[^\w\s\u00C0-\u017F]/g, '').substring(0, 20) || 'Anónimo';
+            addToLeaderboard(playerName, score);
+            messageBox.style.display = 'none';
+            showLeaderboard({ name: playerName, score });
+        };
+        messageText.appendChild(submitNameBtn);
+        
+        const skipBtn = document.createElement('button');
+        skipBtn.className = 'btn-secondary';
+        skipBtn.textContent = 'Omitir';
+        skipBtn.style.display = 'inline-flex';
+        skipBtn.style.marginLeft = 'var(--space-sm)';
+        skipBtn.onclick = function() {
+            messageBox.style.display = 'none';
+        };
+        messageText.appendChild(skipBtn);
+        
+        messageBox.classList.remove("error");
+        messageBox.classList.add("message-box");
+        showMessageBox(messageBox);
+        
+        setTimeout(() => {
+            document.getElementById('playerName').focus();
+        }, 300);
+    }
+}
+
+// Update strike display
+function updateStrikeDisplay() {
+    strikeDisplay.textContent = strikes > 0 ? '❤️'.repeat(strikes) : '💔';
+}
+
+// Game over function
+function showGameOver() {
+    const messageBox = document.getElementById("messageBox");
+    if (messageBox) {
+        const messageText = messageBox.querySelector(".message-text");
+        messageText.innerHTML = '';
+        
+        const gameOverContent = document.createElement('div');
+        gameOverContent.innerHTML = `
+            <div style="font-size: 3rem; margin-bottom: 1rem;">😢</div>
+            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">¡Se acabaron las vidas!</div>
+            <div style="font-size: 1rem; margin-bottom: 1rem;">Puntuación final: ${score}/${questions.length}</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Preguntas intentadas: ${currentQuestion}</div>
+        `;
+        
+        messageText.appendChild(gameOverContent);
+        
+        const restartBtn = document.createElement('button');
+        restartBtn.className = 'btn-primary';
+        restartBtn.textContent = 'Reiniciar Cuestionario';
+        restartBtn.style.display = 'inline-flex';
+        restartBtn.onclick = function() {
+            location.reload();
+        };
+        messageText.appendChild(restartBtn);
+        
+        messageBox.classList.remove("message-box");
+        messageBox.classList.add("error");
+        showMessageBox(messageBox);
+    }
+}
+
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
-const questionContainer = document.getElementById("questionContainer");
 const questionModal = document.getElementById("questionModal");
 const closeModal = document.getElementById("closeModal");
-const menuButton = document.getElementById("menuButton");
-const menuOptions = document.getElementById("menuOptions");
-const darkModeButton = document.getElementById("darkModeButton");
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+const darkModeToggle = document.getElementById("darkModeToggle");
 const isDarkMode = localStorage.getItem("darkMode") === "true";
 const originalQuestions = questions.slice();
 const fontSizeControl = document.getElementById("fontSizeControl");
+const fontSizeValue = document.getElementById("fontSizeValue");
+const viewLeaderboardBtn = document.getElementById("viewLeaderboardBtn");
 const startQuizButton = document.getElementById("start-quiz-button");
 const introHeader = document.getElementById("intro-header");
+const progressFill = document.getElementById("progressFill");
+const progressPercentage = document.getElementById("progressPercentage");
+const currentQuestionNum = document.getElementById("currentQuestionNum");
+const totalQuestions = document.getElementById("totalQuestions");
 
-// Agrega un controlador de eventos para el clic en el botón de inicio
-startQuizButton.addEventListener("click", function(event) {
-    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    introHeader.style.display = "none"; // Oculta el encabezado introductorio
+// Power-ups buttons
+const fiftyFiftyBtn = document.getElementById("fiftyFiftyBtn");
+const hintBtn = document.getElementById("hintBtn");
+const fiftyFiftyCount = document.getElementById("fiftyFiftyCount");
+const hintCount = document.getElementById("hintCount");
+
+// Animation constants for consistency
+const ANIMATION_DURATION = {
+    FAST: 200,
+    BASE: 300,
+    SLOW: 500
+};
+
+// Initialize total questions display
+totalQuestions.textContent = questions.length;
+
+// Sidebar toggle functionality
+menuToggle.addEventListener("click", function() {
+    sidebar.classList.toggle("collapsed");
+    sidebar.classList.toggle("active");
 });
 
-fontSizeControl.addEventListener("input", () => {
-const root = document.documentElement;
-const newSize = fontSizeControl.value + "px";
+// Start quiz button with animation
+startQuizButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    introHeader.style.animation = "fadeOut 0.3s ease-out forwards";
+    
+    setTimeout(() => {
+        introHeader.style.display = "none";
+        introHeader.style.animation = "";
+    }, 300);
+});
 
-  root.style.setProperty("--base-font-size", newSize);
-  root.style.setProperty("--checkbox-size", newSize);
+// Font size control with live preview
+fontSizeControl.addEventListener("input", () => {
+    const root = document.documentElement;
+    const newSize = fontSizeControl.value + "px";
+    
+    root.style.setProperty("--base-font-size", newSize);
+    fontSizeValue.textContent = newSize;
+});
+
+// View leaderboard button
+viewLeaderboardBtn.addEventListener("click", () => {
+    showLeaderboard();
 });
 
 
 function enableDarkMode() {
     document.body.classList.add("dark-mode");
     localStorage.setItem("darkMode", "true");
-    darkModeButton.textContent = "Desactivar Modo Oscuro";
-
-
-    // Cambia el color de las leyendas de preguntas en modo oscuro
-        document.body.classList.add("dark-mode");
-    const questionLegends = document.querySelectorAll(".question-legend");
-    questionLegends.forEach((legend) => {
-            const searchQuestionContainer = document.querySelector(".search-question-container");
-    searchQuestionContainer.classList.add("dark-mode");
-        legend.style.color = "darkorange"; // Cambia "darkorange" al color oscuro deseado
-    });
+    const themeIcon = darkModeToggle.querySelector(".theme-icon");
+    if (themeIcon) {
+        themeIcon.textContent = "☀️";
+    }
 }
 
 function disableDarkMode() {
     document.body.classList.remove("dark-mode");
     localStorage.setItem("darkMode", "false");
-    darkModeButton.textContent = "Activar Modo Oscuro";
-
-    // Restablece el color de las leyendas de preguntas al desactivar el modo oscuro
-        const searchQuestionContainer = document.querySelector(".search-question-container");
-    searchQuestionContainer.classList.remove("dark-mode");
-    const questionLegends = document.querySelectorAll(".question-legend");
-    questionLegends.forEach((legend) => {
-        legend.style.color = ""; // Elimina el color personalizado para volver al valor original
-    });
+    const themeIcon = darkModeToggle.querySelector(".theme-icon");
+    if (themeIcon) {
+        themeIcon.textContent = "🌙";
+    }
 }
 
-// Aplica el modo oscuro si estaba activado
+// Dark mode toggle
+darkModeToggle.addEventListener("click", function() {
+    if (document.body.classList.contains("dark-mode")) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
+});
+
+// Initialize dark mode from localStorage
 if (isDarkMode) {
     enableDarkMode();
 }
 
-    menuButton.addEventListener("click", function() {
-        if (menuOptions.style.display === "none" || menuOptions.style.display === "") {
-            menuOptions.style.display = "block";
-        } else {
-            menuOptions.style.display = "none";
-        }
-    });
-
 scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
+
+// Updated progress bar function for new layout
+function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    
+    if (progressFill) {
+        progressFill.style.width = `${progress}%`;
+    }
+    
+    if (progressPercentage) {
+        progressPercentage.textContent = `${Math.round(progress)}%`;
+    }
+    
+    if (currentQuestionNum) {
+        currentQuestionNum.textContent = currentQuestion + 1;
+    }
+}
+
+// Función para mostrar mensaje con animación
+function showMessageBox(messageBox) {
+    messageBox.style.display = "block";
+    messageBox.style.position = "fixed";
+    messageBox.style.animation = "modalFadeIn 0.3s ease";
+    
+    // Limpia la animación cuando termine
+    messageBox.addEventListener('animationend', function() {
+        this.style.animation = '';
+    }, { once: true });
+}
+
+// Trigger confetti for correct answers
+function triggerConfetti() {
+    if (typeof confetti !== 'undefined') {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+}
+
+// Show sad emoji for incorrect answers
+function showSadEmoji() {
+    const sadEmoji = document.createElement('div');
+    sadEmoji.className = 'sad-emoji';
+    sadEmoji.textContent = '😢';
+    sadEmoji.setAttribute('role', 'status');
+    sadEmoji.setAttribute('aria-live', 'polite');
+    sadEmoji.setAttribute('aria-label', 'Respuesta incorrecta');
+    document.body.appendChild(sadEmoji);
+    
+    setTimeout(() => {
+        sadEmoji.remove();
+    }, 500);
+}
+
+// Power-ups functions
+function updatePowerUpDisplay() {
+    fiftyFiftyCount.textContent = powerUps.fiftyFifty;
+    hintCount.textContent = powerUps.hint;
+    
+    const isFiftyFiftyDisabled = powerUps.fiftyFifty === 0 || usedPowerUps.fiftyFifty;
+    const isHintDisabled = powerUps.hint === 0 || usedPowerUps.hint;
+    
+    fiftyFiftyBtn.disabled = isFiftyFiftyDisabled;
+    hintBtn.disabled = isHintDisabled;
+    
+    // Update aria-labels for accessibility
+    fiftyFiftyBtn.setAttribute('aria-label', `Comodín 50/50, ${powerUps.fiftyFifty} restantes`);
+    hintBtn.setAttribute('aria-label', `Mostrar pista, ${powerUps.hint} restantes`);
+}
+
+function useFiftyFifty() {
+    if (powerUps.fiftyFifty > 0 && !usedPowerUps.fiftyFifty) {
+        const questionObj = questions[currentQuestion];
+        const checkboxes = document.querySelectorAll(`input[name='q${questionObj.number}']`);
+        const incorrectOptions = Array.from(checkboxes).filter(cb => 
+            !questionObj.correctAnswers.includes(cb.value)
+        );
+        
+        if (incorrectOptions.length >= 2) {
+            // Select 2 random distinct indices deterministically
+            const firstIndex = Math.floor(Math.random() * incorrectOptions.length);
+            const remainingIndices = Array.from({length: incorrectOptions.length}, (_, i) => i).filter(i => i !== firstIndex);
+            const secondIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
+            
+            const toRemove = [incorrectOptions[firstIndex], incorrectOptions[secondIndex]];
+            
+            toRemove.forEach(checkbox => {
+                const label = checkbox.closest('label');
+                label.classList.add('option-disabled');
+                checkbox.disabled = true;
+            });
+            
+            powerUps.fiftyFifty--;
+            usedPowerUps.fiftyFifty = true;
+            updatePowerUpDisplay();
+        }
+    }
+}
+
+function useHint() {
+    if (powerUps.hint > 0 && !usedPowerUps.hint) {
+        const questionObj = questions[currentQuestion];
+        const hintText = questionObj.hint 
+            ? `💡 Pista: ${questionObj.hint}` 
+            : `💡 Pista: Lee cuidadosamente todas las opciones antes de responder`;
+        
+        const existingHint = document.querySelector('.hint-message');
+        if (!existingHint) {
+            const hint = document.createElement('div');
+            hint.className = 'multiple-answers-warning hint-message';
+            hint.textContent = hintText;
+            const fieldset = document.querySelector('fieldset');
+            if (fieldset) {
+                // Insert after legend if it exists, otherwise at beginning
+                const legend = fieldset.querySelector('legend');
+                if (legend) {
+                    if (legend.nextSibling) {
+                        fieldset.insertBefore(hint, legend.nextSibling);
+                    } else {
+                        fieldset.appendChild(hint);
+                    }
+                } else {
+                    fieldset.insertBefore(hint, fieldset.firstChild);
+                }
+                
+                powerUps.hint--;
+                usedPowerUps.hint = true;
+                updatePowerUpDisplay();
+            }
+        }
+    }
+}
+
+// Power-ups event listeners
+fiftyFiftyBtn.addEventListener('click', useFiftyFifty);
+skipBtn.addEventListener('click', useSkip);
+hintBtn.addEventListener('click', useHint);
 
 
 function generateQuiz() {
@@ -3408,6 +3724,14 @@ function generateQuiz() {
     fieldset.innerHTML = `
         <legend class="question-title">${questionObj.number}. ${questionObj.question}</legend>
     `;
+
+    // Show warning banner if multiple correct answers (BEFORE user interacts)
+    if (questionObj.correctAnswers.length > 1) {
+        const warning = document.createElement('div');
+        warning.className = 'multiple-answers-warning';
+        warning.textContent = `⚠️ Esta pregunta tiene ${questionObj.correctAnswers.length} respuestas correctas`;
+        fieldset.appendChild(warning);
+    }
 
     if (questionObj.image) {
         const image = document.createElement("img");
@@ -3447,6 +3771,19 @@ if (questionObj.number === 242) {
 
     form.innerHTML = ""; // Limpia el formulario actual
     form.appendChild(fieldset);
+    
+    // Reset power-ups usage for this question
+    usedPowerUps = {
+        fiftyFifty: false,
+        hint: false
+    };
+    updatePowerUpDisplay();
+    
+    // Update strike display
+    updateStrikeDisplay();
+    
+    // Actualiza la barra de progreso
+    updateProgressBar();
 }
 
 
@@ -3467,7 +3804,8 @@ function checkAnswers() {
                 messageText.textContent = "Debes llenar todos los campos correctamente.";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-                messageBox.style.display = "block";
+                showMessageBox(messageBox);
+                showSadEmoji();
             }
             return;
         }
@@ -3479,25 +3817,52 @@ function checkAnswers() {
 
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
+            
+            // Clear previous content
+            messageText.innerHTML = '';
+
+            // Create message content
+            const messageContent = document.createElement('div');
+            messageContent.style.marginBottom = 'var(--space-md)';
 
             if (isCorrect) {
-                messageText.textContent = "Respuesta Correcta";
+                messageContent.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
+                triggerConfetti();
             } else {
-                messageText.textContent = "Respuesta Incorrecta";
+                const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
+                messageContent.innerHTML = `✗ Respuesta Incorrecta<br><br><div style="font-size: 0.95rem; margin-top: var(--space-md);">Respuestas correctas:<br>${formattedCorrectAnswers}</div>`;
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-
-                const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
-                messageText.innerHTML = `Respuestas correctas:<br>${formattedCorrectAnswers}`;
+                showSadEmoji();
+                
+                // Deduct strike
+                strikes--;
+                updateStrikeDisplay();
+                
+                // Check for game over
+                if (strikes <= 0) {
+                    showGameOver();
+                    return;
+                }
             }
 
-            messageBox.style.display = "block";
+            messageText.appendChild(messageContent);
+
+            // Add next button
+            const nextBtnClone = nextBtn.cloneNode(true);
+            nextBtnClone.style.display = "inline-flex";
+            nextBtnClone.innerHTML = 'Siguiente Pregunta →';
+            nextBtnClone.onclick = function() {
+                messageBox.style.display = "none";
+                loadNextQuestion();
+            };
+            messageText.appendChild(nextBtnClone);
+
+            showMessageBox(messageBox);
             submitBtn.style.display = "none";
-            nextBtn.style.display = "block";
-            nextBtn.style.margin = "0 auto";
             scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
         }
     } else {
@@ -3507,29 +3872,84 @@ function checkAnswers() {
 
         const isCorrect = arraysEqual(userAnswers, correctAnswers);
 
+        // Add visual feedback to options
+        const allCheckboxes = document.querySelectorAll(`input[name='q${questionObj.number}']`);
+        allCheckboxes.forEach(checkbox => {
+            const label = checkbox.closest('label');
+            const isChecked = checkbox.checked;
+            const isCorrectOption = correctAnswers.includes(checkbox.value);
+            
+            // Disable checkbox to prevent further changes
+            checkbox.disabled = true;
+            
+            if (isChecked && !isCorrectOption) {
+                // User selected wrong answer - show X
+                label.classList.add('incorrect-answer');
+                const xMark = document.createElement('span');
+                xMark.className = 'answer-marker incorrect';
+                xMark.textContent = ' ✗';
+                label.appendChild(xMark);
+            }
+            
+            if (isCorrectOption) {
+                // Show correct answer with checkmark
+                label.classList.add('correct-answer');
+                const checkMark = document.createElement('span');
+                checkMark.className = 'answer-marker correct';
+                checkMark.textContent = ' ✓';
+                label.appendChild(checkMark);
+            }
+        });
+
         const messageBox = document.getElementById("messageBox");
 
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
+            
+            // Clear previous content
+            messageText.innerHTML = '';
+
+            // Create message content
+            const messageContent = document.createElement('div');
+            messageContent.style.marginBottom = 'var(--space-md)';
 
             if (isCorrect) {
-                messageText.textContent = "Respuesta Correcta";
+                messageContent.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
+                triggerConfetti();
             } else {
-                messageText.textContent = "Respuesta Incorrecta";
+                messageContent.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-
-                const formattedCorrectAnswers = correctAnswers.map(option => `${option}`).join('<br>');
-                messageText.innerHTML = `Respuestas correctas:<br>${formattedCorrectAnswers}`;
+                showSadEmoji();
+                
+                // Deduct strike
+                strikes--;
+                updateStrikeDisplay();
+                
+                // Check for game over
+                if (strikes <= 0) {
+                    showGameOver();
+                    return;
+                }
             }
 
-            messageBox.style.display = "block";
+            messageText.appendChild(messageContent);
+
+            // Add next button
+            const nextBtnClone = nextBtn.cloneNode(true);
+            nextBtnClone.style.display = "inline-flex";
+            nextBtnClone.innerHTML = 'Siguiente Pregunta →';
+            nextBtnClone.onclick = function() {
+                messageBox.style.display = "none";
+                loadNextQuestion();
+            };
+            messageText.appendChild(nextBtnClone);
+
+            showMessageBox(messageBox);
             submitBtn.style.display = "none";
-            nextBtn.style.display = "block";
-            nextBtn.style.margin = "0 auto";
             scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
         }
     }
@@ -3547,27 +3967,99 @@ function arraysEqual(arr1, arr2) {
 function loadNextQuestion() {
     currentQuestion++;
     if (currentQuestion < questions.length) {
-        form.innerHTML = ""; // Limpia el formulario actual
-        generateQuiz(); // Genera la siguiente pregunta
+        // Añade animación de salida suave
+        form.style.animation = `fadeOut ${ANIMATION_DURATION.FAST}ms ease-out`;
+        
+        setTimeout(() => {
+            form.innerHTML = ""; // Limpia el formulario actual
+            generateQuiz(); // Genera la siguiente pregunta
+            
+            // Añade animación de entrada suave
+            form.style.animation = `fadeIn ${ANIMATION_DURATION.BASE}ms ease-in`;
+            
+            // Limpia la animación cuando termine
+            form.addEventListener('animationend', function() {
+                this.style.animation = '';
+            }, { once: true });
+            
+            // Scroll suave hacia arriba
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Limpia los elementos de resultado
-        const resultContainer = document.getElementById("result");
-        const questionNumber = resultContainer.querySelector(".question-number");
-        const resultText = resultContainer.querySelector(".result-text");
-        const correctAnswerText = resultContainer.querySelector(".correct-answer");
-        questionNumber.textContent = "";
-        resultText.textContent = "";
-        correctAnswerText.textContent = "";
+            // Limpia los elementos de resultado
+            const resultContainer = document.getElementById("result");
+            const questionNumber = resultContainer.querySelector(".question-number");
+            const resultText = resultContainer.querySelector(".result-text");
+            const correctAnswerText = resultContainer.querySelector(".correct-answer");
+            questionNumber.textContent = "";
+            resultText.textContent = "";
+            correctAnswerText.textContent = "";
 
-        submitBtn.style.display = "block";
-        nextBtn.style.display = "none";
+            submitBtn.style.display = "block";
+            nextBtn.style.display = "none";
 
-        // Agrega esta línea para borrar el mensaje de respuesta
-        const messageBox = document.getElementById("messageBox");
-        messageBox.style.display = "none";
-        messageBox.classList.remove("error");
+            // Agrega esta línea para borrar el mensaje de respuesta
+            const messageBox = document.getElementById("messageBox");
+            messageBox.style.display = "none";
+            messageBox.classList.remove("error");
+        }, ANIMATION_DURATION.FAST);
     } else {
-        resultDiv.textContent = `¡Has completado el cuestionario! Puntuación final: ${score}/${questions.length}`;
+        // Quiz completado - muestra resultado con animación
+        form.style.animation = `fadeOut ${ANIMATION_DURATION.BASE}ms ease-out`;
+        
+        setTimeout(() => {
+            form.innerHTML = "";
+            
+            // Crea un mensaje de finalización más atractivo
+            const completionMessage = document.createElement('div');
+            completionMessage.className = 'completion-message';
+            completionMessage.style.animation = `fadeIn ${ANIMATION_DURATION.SLOW}ms ease-in`;
+            
+            // Limpia la animación cuando termine
+            completionMessage.addEventListener('animationend', function() {
+                this.style.animation = '';
+            }, { once: true });
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            let emoji = "🎉";
+            let message = "¡Excelente trabajo!";
+            
+            if (percentage >= 90) {
+                emoji = "🏆";
+                message = "¡Perfecto! Estás listo para el examen.";
+            } else if (percentage >= 70) {
+                emoji = "🎯";
+                message = "¡Muy bien! Vas por buen camino.";
+            } else if (percentage >= 50) {
+                emoji = "📚";
+                message = "Buen intento. Sigue practicando.";
+            } else {
+                emoji = "💪";
+                message = "No te rindas. La práctica hace al maestro.";
+            }
+            
+            completionMessage.innerHTML = `
+                <div style="font-size: 4rem; margin-bottom: 1rem;">${emoji}</div>
+                <h2 style="margin-bottom: 1rem;">${message}</h2>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin: 1rem 0;">
+                    ${score}/${questions.length}
+                </div>
+                <div style="font-size: 1.5rem; margin-bottom: 2rem;">
+                    ${percentage}% de respuestas correctas
+                </div>
+            `;
+            
+            form.appendChild(completionMessage);
+            
+            resultDiv.textContent = "";
+            
+            // Check if score makes top 10
+            if (isTopScore(score)) {
+                setTimeout(() => {
+                    promptForName(score);
+                }, 1000);
+            }
+        }, ANIMATION_DURATION.BASE);
+        
         submitBtn.style.display = "none";
         nextBtn.style.display = "none";
     }
@@ -3595,24 +4087,11 @@ function displayQuestionInModal(question) {
 
     // Crea un elemento para mostrar la pregunta
     const questionElement = document.createElement("p");
+    questionElement.className = "modal-question-text";
     questionElement.textContent = question.question;
 
-    // Crea un elemento para mostrar las respuestas
-    const answersElement = document.createElement("ul");
-    question.options.forEach((option) => {
-        const answerItem = document.createElement("li");
-        answerItem.textContent = option;
-        answersElement.appendChild(answerItem);
-    });
-
-    // Crea un elemento para mostrar las respuestas correctas
-    const correctAnswersElement = document.createElement("p");
-    correctAnswersElement.innerHTML = "Respuestas Correctas:<br>" + question.correctAnswers.join(",<br>");
-
-    // Agrega la pregunta, las respuestas y las respuestas correctas al modal
+    // Agrega solo la pregunta al modal (sin opciones ni respuestas correctas)
     modalQuestionContainer.appendChild(questionElement);
-    modalQuestionContainer.appendChild(answersElement);
-    modalQuestionContainer.appendChild(correctAnswersElement);
 
     // Muestra el cuadro de pregunta modal
     questionModal.style.display = "block";
@@ -3640,6 +4119,11 @@ closeModal.addEventListener("click", () => {
     questionModal.style.display = "none";
 });
 
+// Close leaderboard modal
+closeLeaderboard.addEventListener("click", () => {
+    leaderboardModal.style.display = "none";
+});
+
 // Cierra el cuadro de pregunta modal si se hace clic fuera de él
 window.addEventListener("click", (event) => {
     if (event.target === questionModal) {
@@ -3647,18 +4131,48 @@ window.addEventListener("click", (event) => {
     }
 });
 
-darkModeButton.addEventListener("click", () => {
-    if (document.body.classList.contains("dark-mode")) {
-        disableDarkMode();
-    } else {
-        enableDarkMode();
+generateQuiz(); // Genera la primera pregunta al cargar la página
+
+submitBtn.addEventListener("click", function() {
+    // Add visual feedback
+    this.style.opacity = '0.7';
+    this.style.pointerEvents = 'none';
+    
+    // Execute check
+    checkAnswers();
+    
+    // Reset after animation
+    setTimeout(() => {
+        this.style.opacity = '1';
+        this.style.pointerEvents = 'auto';
+    }, 300);
+});
+
+nextBtn.addEventListener("click", loadNextQuestion);
+
+// Keyboard shortcuts for better UX
+document.addEventListener('keydown', function(e) {
+    const messageBox = document.getElementById("messageBox");
+    
+    // Enter key to submit answer
+    if (e.key === 'Enter' && !e.repeat) {
+        const submitVisible = window.getComputedStyle(submitBtn).display !== 'none';
+        if (submitVisible) {
+            e.preventDefault();
+            submitBtn.click();
+        }
+    }
+    
+    // Escape key to close modal and proceed
+    if (e.key === 'Escape') {
+        const modalVisible = messageBox && window.getComputedStyle(messageBox).display !== 'none';
+        if (modalVisible) {
+            messageBox.style.display = 'none';
+            loadNextQuestion();
+        }
     }
 });
 
-generateQuiz(); // Genera la primera pregunta al cargar la página
-
-submitBtn.addEventListener("click", checkAnswers);
-nextBtn.addEventListener("click", loadNextQuestion);
     // Aquí puedes llamar a la función displayQuestionWithAnswer y otras operaciones una vez que el DOM esté cargado.
     // Asegúrate de que esta llamada se realice en el lugar adecuado dentro de tu flujo de trabajo.
 });
