@@ -3341,16 +3341,24 @@ const fontSizeControl = document.getElementById("fontSizeControl");
 const startQuizButton = document.getElementById("start-quiz-button");
 const introHeader = document.getElementById("intro-header");
 
+// Animation constants for consistency
+const ANIMATION_DURATION = {
+    FAST: 200,
+    BASE: 300,
+    SLOW: 500
+};
+
 // Agrega un controlador de eventos para el clic en el botón de inicio con animación
 startQuizButton.addEventListener("click", function(event) {
     event.preventDefault(); // Evita el comportamiento predeterminado del enlace
     
     // Añade animación de salida suave
-    introHeader.style.animation = "fadeOut 0.3s ease-out forwards";
+    introHeader.style.animation = `fadeOut ${ANIMATION_DURATION.BASE}ms ease-out forwards`;
     
     setTimeout(() => {
         introHeader.style.display = "none"; // Oculta el encabezado introductorio
-    }, 300); // Espera a que termine la animación
+        introHeader.style.animation = ""; // Limpia la animación
+    }, ANIMATION_DURATION.BASE);
 });
 
 fontSizeControl.addEventListener("input", () => {
@@ -3430,7 +3438,12 @@ function updateProgressBar() {
 // Función para mostrar mensaje con animación
 function showMessageBox(messageBox) {
     messageBox.style.display = "block";
-    messageBox.style.animation = "slideDown 0.3s ease-out";
+    messageBox.style.animation = `slideDown ${ANIMATION_DURATION.BASE}ms ease-out`;
+    
+    // Limpia la animación cuando termine
+    messageBox.addEventListener('animationend', function() {
+        this.style.animation = '';
+    }, { once: true });
 }
 
 
@@ -3583,14 +3596,19 @@ function loadNextQuestion() {
     currentQuestion++;
     if (currentQuestion < questions.length) {
         // Añade animación de salida suave
-        form.style.animation = "fadeOut 0.2s ease-out";
+        form.style.animation = `fadeOut ${ANIMATION_DURATION.FAST}ms ease-out`;
         
         setTimeout(() => {
             form.innerHTML = ""; // Limpia el formulario actual
             generateQuiz(); // Genera la siguiente pregunta
             
             // Añade animación de entrada suave
-            form.style.animation = "fadeIn 0.3s ease-in";
+            form.style.animation = `fadeIn ${ANIMATION_DURATION.BASE}ms ease-in`;
+            
+            // Limpia la animación cuando termine
+            form.addEventListener('animationend', function() {
+                this.style.animation = '';
+            }, { once: true });
             
             // Scroll suave hacia arriba
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -3611,10 +3629,10 @@ function loadNextQuestion() {
             const messageBox = document.getElementById("messageBox");
             messageBox.style.display = "none";
             messageBox.classList.remove("error");
-        }, 200);
+        }, ANIMATION_DURATION.FAST);
     } else {
         // Quiz completado - muestra resultado con animación
-        form.style.animation = "fadeOut 0.3s ease-out";
+        form.style.animation = `fadeOut ${ANIMATION_DURATION.BASE}ms ease-out`;
         
         setTimeout(() => {
             form.innerHTML = "";
@@ -3622,7 +3640,12 @@ function loadNextQuestion() {
             // Crea un mensaje de finalización más atractivo
             const completionMessage = document.createElement('div');
             completionMessage.className = 'completion-message';
-            completionMessage.style.animation = "fadeIn 0.5s ease-in";
+            completionMessage.style.animation = `fadeIn ${ANIMATION_DURATION.SLOW}ms ease-in`;
+            
+            // Limpia la animación cuando termine
+            completionMessage.addEventListener('animationend', function() {
+                this.style.animation = '';
+            }, { once: true });
             
             const percentage = Math.round((score / questions.length) * 100);
             let emoji = "🎉";
@@ -3656,7 +3679,7 @@ function loadNextQuestion() {
             form.appendChild(completionMessage);
             
             resultDiv.textContent = "";
-        }, 300);
+        }, ANIMATION_DURATION.BASE);
         
         submitBtn.style.display = "none";
         nextBtn.style.display = "none";
