@@ -3286,10 +3286,12 @@ const form = document.getElementById("quizForm");
 const randomizeQuestionsBtn = document.getElementById("randomizeQuestionsBtn");
 
 // Power-ups system
+const INITIAL_POWERUP_COUNT = 3;
+
 let powerUps = {
-    fiftyFifty: 3,
-    skip: 3,
-    hint: 3
+    fiftyFifty: INITIAL_POWERUP_COUNT,
+    skip: INITIAL_POWERUP_COUNT,
+    hint: INITIAL_POWERUP_COUNT
 };
 
 let usedPowerUps = {
@@ -3308,14 +3310,8 @@ randomizeQuestionsBtn.addEventListener("click", () => {
     window.location.reload();
   } else {
     // Si no se están mostrando de manera aleatoria, mezcla las preguntas y comienza desde el principio.
-    shuffleQuestions();
-    currentQuestion = 0;
-    score = 0;
-    updateScoreDisplay();
-    generateQuiz();
-    randomizeQuestionsBtn.textContent = "Restablecer Cuestionario";
+    initializeRandomization();
   }
-  isRandomizing = !isRandomizing;
 });
 
 // Función para mezclar las preguntas de manera aleatoria
@@ -3324,6 +3320,17 @@ function shuffleQuestions() {
     const j = Math.floor(Math.random() * (i + 1));
     [questions[i], questions[j]] = [questions[j], questions[i]];
   }
+}
+
+// Function to initialize randomization
+function initializeRandomization() {
+    shuffleQuestions();
+    currentQuestion = 0;
+    score = 0;
+    updateScoreDisplay();
+    generateQuiz();
+    randomizeQuestionsBtn.textContent = "Restablecer Cuestionario";
+    isRandomizing = true;
 }
 
 // Función para actualizar la pantalla de puntuación
@@ -3481,6 +3488,9 @@ function showSadEmoji() {
     const sadEmoji = document.createElement('div');
     sadEmoji.className = 'sad-emoji';
     sadEmoji.textContent = '😢';
+    sadEmoji.setAttribute('role', 'status');
+    sadEmoji.setAttribute('aria-live', 'polite');
+    sadEmoji.setAttribute('aria-label', 'Respuesta incorrecta');
     document.body.appendChild(sadEmoji);
     
     setTimeout(() => {
@@ -3494,9 +3504,18 @@ function updatePowerUpDisplay() {
     skipCount.textContent = powerUps.skip;
     hintCount.textContent = powerUps.hint;
     
-    fiftyFiftyBtn.disabled = powerUps.fiftyFifty === 0 || usedPowerUps.fiftyFifty;
-    skipBtn.disabled = powerUps.skip === 0;
-    hintBtn.disabled = powerUps.hint === 0 || usedPowerUps.hint;
+    const isFiftyFiftyDisabled = powerUps.fiftyFifty === 0 || usedPowerUps.fiftyFifty;
+    const isSkipDisabled = powerUps.skip === 0;
+    const isHintDisabled = powerUps.hint === 0 || usedPowerUps.hint;
+    
+    fiftyFiftyBtn.disabled = isFiftyFiftyDisabled;
+    skipBtn.disabled = isSkipDisabled;
+    hintBtn.disabled = isHintDisabled;
+    
+    // Update aria-labels for accessibility
+    fiftyFiftyBtn.setAttribute('aria-label', `Comodín 50/50, ${powerUps.fiftyFifty} restantes`);
+    skipBtn.setAttribute('aria-label', `Saltar pregunta, ${powerUps.skip} restantes`);
+    hintBtn.setAttribute('aria-label', `Mostrar pista, ${powerUps.hint} restantes`);
 }
 
 function useFiftyFifty() {
@@ -3508,7 +3527,7 @@ function useFiftyFifty() {
         );
         
         if (incorrectOptions.length >= 2) {
-            // Select 2 random distinct indices
+            // Select 2 random distinct indices (safe because length >= 2)
             const firstIndex = Math.floor(Math.random() * incorrectOptions.length);
             let secondIndex;
             do {
@@ -3549,8 +3568,14 @@ function useHint() {
             hint.className = 'multiple-answers-warning hint-message';
             hint.textContent = hintText;
             const fieldset = document.querySelector('fieldset');
-            if (fieldset && fieldset.firstChild) {
-                fieldset.insertBefore(hint, fieldset.firstChild.nextSibling);
+            if (fieldset) {
+                // Insert after legend (first child) or at beginning if no legend
+                const legend = fieldset.querySelector('legend');
+                if (legend && legend.nextSibling) {
+                    fieldset.insertBefore(hint, legend.nextSibling);
+                } else {
+                    fieldset.insertBefore(hint, fieldset.firstChild);
+                }
                 
                 powerUps.hint--;
                 usedPowerUps.hint = true;
@@ -3933,10 +3958,10 @@ generateQuiz(); // Genera la primera pregunta al cargar la página
 submitBtn.addEventListener("click", checkAnswers);
 nextBtn.addEventListener("click", loadNextQuestion);
 
-// Auto-randomize questions on page load (after initial render to ensure DOM is ready)
+// Auto-randomize questions on page load (call function directly instead of simulating click)
 if (randomizeQuestionsBtn && !isRandomizing) {
     setTimeout(() => {
-        randomizeQuestionsBtn.click();
+        initializeRandomization();
     }, INITIAL_RANDOMIZE_DELAY);
 }
 
