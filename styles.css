@@ -2,29 +2,109 @@
 
 :root {
   --base-font-size: 16px;
-  --fieldset-legend-font-size-multiplier: 1.7; /* Ajusta el multiplicador para fieldset legend */
+  --fieldset-legend-font-size-multiplier: 1.7;
+  
+  /* Modern Color Palette */
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #818cf8;
+  --secondary-color: #06b6d4;
+  --secondary-hover: #0891b2;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  
+  /* Neutral Colors */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --background-light: #f9fafb;
+  --background-white: #ffffff;
+  --border-color: #e5e7eb;
+  
+  /* Dark Mode Colors */
+  --dark-bg: #0f172a;
+  --dark-surface: #1e293b;
+  --dark-text: #f1f5f9;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Modern Fieldset and Legend Styles */
 fieldset legend {
   font-size: calc(var(--base-font-size) * var(--fieldset-legend-font-size-multiplier));
-    font-weight: bold; /* Texto en negrita */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Agrega una sombra suave */
-    text-transform: ; /* Texto en mayúsculas */
-    color: #0C28C5; /* Color de texto oscuro (por ejemplo, negro) */
+  font-weight: 600;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  transition: transform var(--transition-base);
 }
 
+fieldset legend:hover {
+  transform: scale(1.02);
+}
+
+/* Modern Container */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: auto;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
     text-align: center;
+    animation: fadeIn var(--transition-slow) ease-in;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern Typography */
 h1 {
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-  text-shadow: 0.5px 1px #FFF150;
+    font-size: 2.5rem;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #nextButtonContainer {
@@ -33,24 +113,45 @@ h1 {
     font-family: ;
 }
 
+/* Modern Fieldset - Card Style */
 fieldset {
-    background-color: lightblue;
-    border-radius: 5px;
-    border: 5px solid #007bff;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: center;
-    bord
-
+    background: var(--background-white);
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: left;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
+    animation: slideIn var(--transition-base) ease-out;
 }
 
+fieldset:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Modern Legend */
 legend {
-    font-weight: arial;
-    color: lightskyblue;
-    background-color: lightblue;
-    border-radius: 10px;
-
-
+    font-weight: 600;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--background-white), var(--background-light));
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 2px solid var(--border-color);
 }
 
 #questionModal img {
@@ -77,42 +178,92 @@ legend {
     max-width: 100%; /* Evita que el contenedor se desborde de la pantalla */
 }
 
+/* Modern Label Styles */
 label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
     font-size: var(--base-font-size);
-    font-family: sans-serif   ;
-    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--background-light);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: 2px solid transparent;
 }
 
+label:hover {
+    background: var(--background-white);
+    border-color: var(--primary-light);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Modern Button Styles */
 button {
-    padding: 5px 10px;
-    font-size: 18px;
-    background-color: #007bff;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     color: #fff;
     border: none;
+    border-radius: 12px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 1rem;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width var(--transition-base), height var(--transition-base);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
 }
 
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-md);
+}
+
+/* Modern Result Display */
 #result {
-    margin-top: 20px;
+    margin-top: 2rem;
+    animation: fadeIn var(--transition-base) ease-in;
 }
 
-/* Estilo para el botón activo (verde) */
+/* Modern Active/Inactive Button States */
 .active-button {
-    background-color: green;
+    background: linear-gradient(135deg, var(--success-color), #059669);
     color: white;
+    box-shadow: var(--shadow-lg);
 }
 
-/* Estilo para el botón inactivo (gris) */
 .inactive-button {
-    background-color: gray;
+    background: linear-gradient(135deg, #9ca3af, #6b7280);
     color: white;
+    opacity: 0.7;
 }
 
 .question-number {
@@ -136,163 +287,272 @@ button:hover {
     margin-top: 10px; /* Ajusta el espacio entre los botones si es necesario */
 }
 
+/* Modern Message Box */
 .message-box {
   display: none;
-  background-color: #4CAF50; /* Color de fondo verde para respuesta correcta */
+  background: linear-gradient(135deg, var(--success-color), #059669);
   color: white;
   font-family: 'Roboto', sans-serif;
-  padding: 5px;
-  border-radius: 5px;
-  margin-top: 5px;
-font-weight: bold;
+  padding: 1.25rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  animation: slideDown var(--transition-base) ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .message-box.error {
-  background-color: #f44336; /* Color de fondo rojo para respuesta incorrecta */
+  background: linear-gradient(135deg, var(--error-color), #dc2626);
 }
 
+/* Modern Error Display */
 .error {
-    background-color: #ff0000; /* Fondo rojo */
-    border: 0px solid #ff0000; /* Borde rojo */
-    color: whitesmoke; /* Texto rojo */
-    padding: 5px;
+    background: linear-gradient(135deg, var(--error-color), #dc2626);
+    border: none;
+    color: white;
+    padding: 1rem;
     font-family: 'Roboto', sans-serif;
-    margin: 5px 0;
-    border-radius: 50px;
-    font-weight: bold;
+    margin: 1rem 0;
+    border-radius: 12px;
+    font-weight: 600;
     font-size: var(--base-font-size);
+    box-shadow: var(--shadow-md);
+    animation: shake 0.5s ease-in-out;
 }
 
-/* Estilos para el cuadro modal */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Modern Modal Styles */
 .modal {
-    display: none; /* Oculta el modal de forma predeterminada */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 9999; /* Coloca el modal por encima del contenido principal */
-
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    animation: fadeIn var(--transition-base) ease-in;
 }
 
 .modal-content {
-    border-radius: 5px;
+    border-radius: 16px;
     position: relative;
+    background: var(--background-white);
+    max-width: 90%;
+    max-height: 90vh;
+    margin: 2rem auto;
+    overflow: auto;
+    box-shadow: var(--shadow-xl);
+    animation: modalSlideIn var(--transition-base) ease-out;
 }
 
-/* Estilos para el botón de cierre (la 'X') */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modern Close Button */
 .close-modal {
     position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
+.close-modal:hover {
+    background: var(--background-light);
+    color: var(--error-color);
+    transform: rotate(90deg);
+}
+
+/* Modern Checkbox Styles */
 input[type="checkbox"] {
-  width: var(--checkbox-size);
-  height: var(--checkbox-size);
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  cursor: pointer;
+  appearance: none;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  position: relative;
+  flex-shrink: 0;
 }
 
-/* Estilo para el botón de menú */
+input[type="checkbox"]:hover {
+  border-color: var(--primary-color);
+  background: var(--background-light);
+}
+
+input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-color: var(--primary-color);
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Modern Menu Container */
 .menu-container {
     position: relative;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* Estilo para el botón de menú */
 .menu-button {
-    background-color: green;
+    background: linear-gradient(135deg, var(--success-color), #059669);
     color: white;
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
+    border-radius: 12px;
+    padding: 1rem 2rem;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 1.125rem;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
 }
 
-/* Estilos para las opciones del menú (ocultas inicialmente) */
+.menu-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Modern Menu Options */
 .menu-options {
     display: none;
     position: absolute;
-    background-color: green;
-    border-radius: 10px;
-    width: auto; /* Ocupa todo el ancho del contenido */
-    top: 50%; /* Centra verticalmente en relación al elemento padre */
-    left: 50%; /* Centra horizontalmente en relación al elemento padre */
-    transform: translate(-50%, 22%); /* Corrige la posición al centro */
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
-    padding: 10px; /* Espacio interno */
+    background: var(--background-white);
+    border-radius: 16px;
+    width: auto;
+    min-width: 300px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    box-shadow: var(--shadow-xl);
+    border: 2px solid var(--border-color);
+    animation: menuSlideDown var(--transition-base) ease-out;
+    z-index: 1000;
 }
 
-/* Estilos para las opciones del menú */
+@keyframes menuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 .menu-option {
     display: block;
-    padding: 10px;
-    color: white;
+    padding: 0.875rem 1.25rem;
+    color: var(--text-primary);
     text-align: center;
     text-decoration: none;
-    border: none; /* Elimina el borde de los botones del menú */
-    width: 100%; /* Ocupa todo el ancho del menú */
-    margin: 5px 0; /* Espacio vertical entre botones */
-    background-color: green;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Agrega sombra al texto */
+    border: none;
+    width: 100%;
+    margin: 0.5rem 0;
+    background: linear-gradient(135deg, var(--success-color), #059669);
+    color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-fast);
 }
 
-.search-question-container {
-    display: flex; /* Utiliza un diseño flexible para alinear los elementos horizontalmente */
-    align-items: center;
-}
-
-#questionNumberInput.menu-option {
-    flex-grow: 1; /* Hace que el cuadro de texto ocupe el espacio restante */
-    padding: 0px;
-    text-align: center;
-    background-color: black;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    color: lightgray;
-    width: 30%;
-
-}
-#questionNumberInput.menu-option::placeholder {
-    color: lightgray; /* Establece el color del placeholder en gris claro */
-}
-
-/* Estilos para el placeholder del cuadro "Número de Pregunta" */
-#showQuestionBtn.menu-option {
-    flex-basis: auto; /* Restablece el tamaño base del botón */
-    margin-right: 10px; /* Espacio entre el botón y el cuadro de texto */
-}
-/* Cambia el color de fondo de las opciones al pasar el ratón sobre ellas */
 .menu-option:hover {
-    background-color: darkgreen;
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
 }
 
+/* Modern Search Container */
 .search-question-container {
     display: flex;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Aplica la misma sombra a todo el contenedor */
+    gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    overflow: auto;
+    max-width: 100%;
+    background: transparent;
+    border-radius: 12px;
+    padding: 0.25rem;
 }
 
-/* Estilos para el cuadro de texto "Número de Pregunta" */
 #questionNumberInput.menu-option {
     flex-grow: 1;
-    padding: 5px;
+    padding: 0.75rem;
     text-align: center;
-    border: none;
-    background-color: green;
+    background: var(--dark-bg);
     border-radius: 10px;
+    box-shadow: var(--shadow-sm);
     color: white;
-    box-shadow: none; /* Elimina la sombra del cuadro de texto */
+    width: auto;
+    min-width: 120px;
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-fast);
 }
 
-/* Estilos para el botón "Buscar Pregunta" */
+#questionNumberInput.menu-option:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+#questionNumberInput.menu-option::placeholder {
+    color: #9ca3af;
+}
+
 #showQuestionBtn.menu-option {
     flex-basis: auto;
-    margin-right: 10px;
-    box-shadow: none; /* Elimina la sombra del botón */
+    margin: 0;
+    white-space: nowrap;
 }
 
 #intro-header h1 {
@@ -300,180 +560,297 @@ input[type="checkbox"] {
     margin-bottom: 10px;
 }
 
+/* Modern Body Styles */
 body {
-margin: 0;
-padding: 0;
-background-image: url('imagen/fondo/1.png'); /* Coloca la imagen de fondo aquí */
-background-size: cover;
-background-repeat: no-repeat;
-background-attachment: fixed;
-background-position: center center; /* Centra la imagen vertical y horizontalmente */
-position: relative; /* Agrega posición relativa para que los pseudo-elementos sean relativos a este */
-font-size: var(--base-font-size);
-    background-color: lightblue;
-    /* Agrega otros estilos claros según sea necesario */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    position: relative;
+    font-size: var(--base-font-size);
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
 }
 
-score {
-    font-size: 21px;
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('imagen/fondo/1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.15;
+    z-index: -1;
 }
 
-/* Estilos para el modo oscuro */
+/* Score Display */
+#score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 1.5rem;
+    background: var(--background-white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    margin: 2rem 0;
+    animation: fadeIn var(--transition-base) ease-in;
+}
+
+/* Modern Dark Mode */
 body.dark-mode {
-    background-color: #333333;
-    color: #ffffff;
-    /* Agrega otros estilos oscuros según sea necesario */
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
+    color: var(--dark-text);
 }
 
-/* Estilos para modo oscuro */
 .dark-mode {
-    background-color: #333; /* Cambia el fondo a un color oscuro */
-    color: white; /* Cambia el color del texto a blanco */
-
-
-
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
 }
 
 .dark-mode legend {
-    color: lightskyblue;
-    background-color: #431;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 1.2); /* Agrega una sombra suave */
-    border-radius: 10px;
-
-
-
-
+    color: var(--dark-text);
+    background: linear-gradient(135deg, var(--dark-surface), #334155);
+    box-shadow: var(--shadow-xl);
+    border-radius: 12px;
+    border-color: #475569;
 }
 
 .dark-mode .search-question-container {
-    color: white; /* Cambia el color del texto del cuadro a blanco */
+    color: var(--dark-text);
 }
 
 .dark-mode fieldset {
-    background-color: #433; /* O cualquier otro valor deseado */
+    background-color: var(--dark-surface);
+    border-color: #475569;
 }
 
 .dark-mode .question-container {
-    background-color: #333; /* Color de fondo oscuro */
-
-    color: white; /* Color de texto claro */
-
-
+    background-color: var(--dark-surface);
+    color: var(--dark-text);
 }
 
-input[type="text"] {
-    width: 25px; /* Cambia el tamaño según tus preferencias */
-
-
+.dark-mode label {
+    background: #1e293b;
+    color: var(--dark-text);
 }
 
-
-body.dark-mode .question-container {
-    background-color: black; /* Cambia el fondo a negro en modo oscuro */
-    color: white; /* Cambia el color del texto a blanco en modo oscuro */
-    /* Otros estilos para el modo oscuro */
+.dark-mode label:hover {
+    background: var(--dark-surface);
+    border-color: var(--primary-light);
 }
 
+/* Modern Modal Question Container */
 #modalQuestionContainer {
-    margin: 10px; /* Reduce el margen */
-    padding: 10px; /* Reduce el relleno */
-    width: px;
-    background-color: white; /* Cambia el fondo a blanco en modo normal */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 1.2); /* Agrega una sombra suave */
-    font-size: 25px; /* Cambia el tamaño de fuente a un valor más normal */
-    border: 5px solid #ccc; /* Agrega un borde con un color gris claro */
-    border-radius: 10px;
-    top: 100%; /* Alinea las opciones debajo del botón de menú */
-    left: 40%;
-
+    margin: 2rem;
+    padding: 2rem;
+    background-color: var(--background-white);
+    box-shadow: var(--shadow-xl);
+    font-size: 1.125rem;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
 }
 
 .close {
-  text-shadow: 0.5px 1px #FFF150;
-    font-size: 50px; /* Cambia el tamaño de la "X" a 30px */
-    color: mediumseagreen; /* Cambia el color del texto a blanco en modo oscuro */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 3rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    line-height: 1;
+    padding: 0.5rem;
+}
+
+.close:hover {
+    color: var(--error-color);
+    transform: rotate(90deg) scale(1.1);
 }
 
 .dark-mode .close {
-  text-shadow: 0.5px 1px #FFF150;
-    font-size: 50px; /* Cambia el tamaño de la "X" a 30px */
-    color: mediumseagreen; /* Cambia el color del texto a blanco en modo oscuro */
+    color: var(--dark-text);
 }
 
-
+.dark-mode .close:hover {
+    color: var(--error-color);
+}
 
 .dark-mode #modalQuestionContainer {
-    margin: 10;
-    padding: 10;
-    width: auto;
-    background-color: black;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    font-size: 25px;
-    border-radius: 10px;
+    background-color: var(--dark-surface);
+    color: var(--dark-text);
+    border-color: #475569;
+}
 
-
-    }
-
+/* Modern Intro Header */
 #intro-header {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: var(--shadow-xl);
+    max-width: 90%;
+    width: 600px;
     text-align: center;
-    z-index: 9999; /* Asegura que el encabezado esté al frente */
+    z-index: 9999;
+    animation: modalSlideIn var(--transition-slow) ease-out;
 }
 
 #background-imagex {
-    width: 100%; /* La imagen se ajustará al ancho del contenedor */
-    max-width: 940px; /* Máximo ancho de 940px para adaptarse a la imagen original */
-    height: auto; /* La altura se ajustará automáticamente */
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    margin: 1.5rem 0;
 }
 
 #intro-header h1 {
-    font-size: 29px;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #intro-header p {
-    font-size: 21px;
-    margin-bottom: 20px;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 #start-quiz-button {
-    background-color: #007bff;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
     color: #fff;
-    padding: 10px 10px;
+    padding: 1rem 2.5rem;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    display: inline-block;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base);
 }
 
 #start-quiz-button:hover {
-    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    background: linear-gradient(135deg, var(--primary-hover), var(--secondary-hover));
 }
 
+/* Modern Responsive Design */
 @media (max-width: 768px) {
-    /* Estilos específicos para dispositivos móviles */
     #intro-header {
-        width: 45vh; /* Hace que el contenedor sea un poco más grande en dispositivos móviles */
-        height: 65vh; /* Establece la altura al 100% del viewport */
+        width: 90%;
+        padding: 2rem 1.5rem;
     }
-    #background-image {
-        max-width: 100%; /* Aumenta el tamaño máximo de la imagen para dispositivos móviles */
+    
+    #intro-header h1 {
+        font-size: 1.5rem;
     }
+    
+    #intro-header p {
+        font-size: 1rem;
+    }
+    
+    #background-imagex {
+        max-width: 100%;
+    }
+    
     #start-quiz-button {
-        width: 50%; /* Establece el ancho al 100% */
-        margin-top: 20px; /* Ajusta el margen superior si es necesario */
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .container {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    fieldset {
+        padding: 1.5rem;
+    }
+    
+    .menu-options {
+        min-width: 250px;
     }
 }
 
 .dark-mode #intro-header {
-    background-color: rgba(0, 0, 0, 0.9); /* Color de fondo en modo oscuro */
-    color: #fff; /* Color de texto en modo oscuro */
+    background: rgba(15, 23, 42, 0.98);
+    color: var(--dark-text);
+}
+
+.dark-mode #intro-header h1 {
+    background: linear-gradient(135deg, var(--primary-light), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dark-mode #intro-header p {
+    color: #cbd5e1;
+}
+
+/* Input text styles */
+input[type="text"] {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Progress Indicator */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--background-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width var(--transition-slow) ease-out;
+    border-radius: 4px;
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
