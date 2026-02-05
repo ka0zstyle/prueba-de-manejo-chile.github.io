@@ -656,8 +656,14 @@ button {
   animation: modalFadeIn 0.3s ease;
   z-index: 2000;
   min-width: 320px;
-  max-width: 500px;
+  max-width: min(500px, 90vw);
+  max-height: 80vh;
+  overflow-y: auto;
   box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .message-box::before {
@@ -689,9 +695,14 @@ button {
 
 .message-text {
   font-size: 1.25rem;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
   color: var(--text-primary);
   font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
 }
 
 .result-display {
@@ -708,6 +719,120 @@ button {
 .correct-answer {
   color: var(--text-secondary);
   font-size: 0.875rem;
+  margin-top: var(--space-sm);
+}
+
+/* Modal Next Button Styling */
+.message-box button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  margin-top: var(--space-md);
+  min-width: 200px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.message-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.message-box button:active {
+  transform: translateY(0);
+}
+
+/* Improve option labels */
+.option-label {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.option-label:hover {
+  transform: translateX(4px);
+  background: var(--bg-secondary);
+}
+
+/* Better focus states for accessibility */
+input[type="checkbox"]:focus-visible + label,
+input[type="radio"]:focus-visible + label {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Submit button enhancement */
+button[type="submit"], .submit-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+button[type="submit"]::after, .submit-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button[type="submit"]:active::after, .submit-btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Question card enhancement */
+.question-card {
+  position: relative;
+}
+
+.question-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.question-card:hover::before {
+  opacity: 0.1;
+}
+
+/* Mobile improvements */
+@media (max-width: 768px) {
+  .message-box {
+    padding: var(--space-lg);
+    min-width: 280px;
+  }
+  
+  .message-text {
+    font-size: 1.1rem;
+  }
+  
+  .message-box button {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.95rem;
+    min-width: 180px;
+  }
+}
 }
 
 /* ============================================

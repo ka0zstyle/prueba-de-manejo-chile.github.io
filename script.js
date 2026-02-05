@@ -3703,28 +3703,33 @@ function checkAnswers() {
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
             
-            // Clear previous content first
+            // Clear previous content
             messageText.innerHTML = '';
 
+            // Create message content
+            const messageContent = document.createElement('div');
+            messageContent.style.marginBottom = 'var(--space-md)';
+
             if (isCorrect) {
-                messageText.innerHTML = "✓ Respuesta Correcta";
+                messageContent.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
                 triggerConfetti();
             } else {
                 const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
-                messageText.innerHTML = `✗ Respuesta Incorrecta<br><br>Respuestas correctas:<br>${formattedCorrectAnswers}`;
+                messageContent.innerHTML = `✗ Respuesta Incorrecta<br><br><div style="font-size: 0.95rem; margin-top: var(--space-md);">Respuestas correctas:<br>${formattedCorrectAnswers}</div>`;
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
                 showSadEmoji();
             }
 
-            // Add next button after setting innerHTML
-            messageText.appendChild(document.createElement('br'));
+            messageText.appendChild(messageContent);
+
+            // Add next button
             const nextBtnClone = nextBtn.cloneNode(true);
-            nextBtnClone.style.display = "inline-block";
-            nextBtnClone.style.marginTop = "1rem";
+            nextBtnClone.style.display = "inline-flex";
+            nextBtnClone.innerHTML = 'Siguiente Pregunta →';
             nextBtnClone.onclick = function() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
@@ -3773,27 +3778,32 @@ function checkAnswers() {
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
             
-            // Clear previous content first
+            // Clear previous content
             messageText.innerHTML = '';
 
+            // Create message content
+            const messageContent = document.createElement('div');
+            messageContent.style.marginBottom = 'var(--space-md)';
+
             if (isCorrect) {
-                messageText.innerHTML = "✓ Respuesta Correcta";
+                messageContent.innerHTML = "✓ Respuesta Correcta";
                 messageBox.classList.remove("error");
                 messageBox.classList.add("message-box");
                 score++;
                 triggerConfetti();
             } else {
-                messageText.innerHTML = "✗ Respuesta Incorrecta";
+                messageContent.innerHTML = "✗ Respuesta Incorrecta";
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
                 showSadEmoji();
             }
 
-            // Add next button after setting innerHTML
-            messageText.appendChild(document.createElement('br'));
+            messageText.appendChild(messageContent);
+
+            // Add next button
             const nextBtnClone = nextBtn.cloneNode(true);
-            nextBtnClone.style.display = "inline-block";
-            nextBtnClone.style.marginTop = "1rem";
+            nextBtnClone.style.display = "inline-flex";
+            nextBtnClone.innerHTML = 'Siguiente Pregunta →';
             nextBtnClone.onclick = function() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
@@ -3975,6 +3985,45 @@ generateQuiz(); // Genera la primera pregunta al cargar la página
 
 submitBtn.addEventListener("click", checkAnswers);
 nextBtn.addEventListener("click", loadNextQuestion);
+
+// Keyboard shortcuts for better UX
+document.addEventListener('keydown', function(e) {
+    // Enter key on submit button
+    if (e.key === 'Enter' && submitBtn.style.display !== 'none' && !e.repeat) {
+        e.preventDefault();
+        checkAnswers();
+    }
+    
+    // Escape key to close modal
+    if (e.key === 'Escape') {
+        const messageBox = document.getElementById("messageBox");
+        if (messageBox && messageBox.style.display !== 'none') {
+            messageBox.style.display = 'none';
+            loadNextQuestion();
+        }
+    }
+});
+
+// Smooth scroll behavior for form submission
+submitBtn.addEventListener("click", function() {
+    // Add a subtle loading indicator
+    submitBtn.style.opacity = '0.7';
+    submitBtn.style.pointerEvents = 'none';
+    
+    setTimeout(() => {
+        submitBtn.style.opacity = '1';
+        submitBtn.style.pointerEvents = 'auto';
+    }, 300);
+});
+
+// Add progress animation
+function updateProgressBar() {
+    const progress = ((currentQuestion + 1) / questions.length) * 100;
+    const progressBar = document.querySelector('.progress-fill');
+    if (progressBar) {
+        progressBar.style.transition = 'width 0.5s ease';
+    }
+}
 
 // Auto-randomize questions on page load (call function directly instead of simulating click)
 if (randomizeQuestionsBtn && !isRandomizing) {
