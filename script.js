@@ -3527,12 +3527,10 @@ function useFiftyFifty() {
         );
         
         if (incorrectOptions.length >= 2) {
-            // Select 2 random distinct indices (safe because length >= 2)
+            // Select 2 random distinct indices deterministically
             const firstIndex = Math.floor(Math.random() * incorrectOptions.length);
-            let secondIndex;
-            do {
-                secondIndex = Math.floor(Math.random() * incorrectOptions.length);
-            } while (secondIndex === firstIndex);
+            const remainingIndices = Array.from({length: incorrectOptions.length}, (_, i) => i).filter(i => i !== firstIndex);
+            const secondIndex = remainingIndices[Math.floor(Math.random() * remainingIndices.length)];
             
             const toRemove = [incorrectOptions[firstIndex], incorrectOptions[secondIndex]];
             
@@ -3569,10 +3567,14 @@ function useHint() {
             hint.textContent = hintText;
             const fieldset = document.querySelector('fieldset');
             if (fieldset) {
-                // Insert after legend (first child) or at beginning if no legend
+                // Insert after legend if it exists, otherwise at beginning
                 const legend = fieldset.querySelector('legend');
-                if (legend && legend.nextSibling) {
-                    fieldset.insertBefore(hint, legend.nextSibling);
+                if (legend) {
+                    if (legend.nextSibling) {
+                        fieldset.insertBefore(hint, legend.nextSibling);
+                    } else {
+                        fieldset.appendChild(hint);
+                    }
                 } else {
                     fieldset.insertBefore(hint, fieldset.firstChild);
                 }
