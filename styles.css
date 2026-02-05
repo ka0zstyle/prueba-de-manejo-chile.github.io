@@ -928,6 +928,19 @@ button {
   color: var(--text-tertiary);
 }
 
+/* Disabled option from 50/50 power-up */
+.option-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Modal question text styling */
+.modal-question-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */

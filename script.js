@@ -3519,8 +3519,7 @@ function useFiftyFifty() {
             
             toRemove.forEach(checkbox => {
                 const label = checkbox.closest('label');
-                label.style.opacity = '0.3';
-                label.style.pointerEvents = 'none';
+                label.classList.add('option-disabled');
                 checkbox.disabled = true;
             });
             
@@ -3890,10 +3889,8 @@ function displayQuestionInModal(question) {
 
     // Crea un elemento para mostrar la pregunta
     const questionElement = document.createElement("p");
+    questionElement.className = "modal-question-text";
     questionElement.textContent = question.question;
-    questionElement.style.fontSize = "1.125rem";
-    questionElement.style.fontWeight = "600";
-    questionElement.style.marginTop = "1rem";
 
     // Agrega solo la pregunta al modal (sin opciones ni respuestas correctas)
     modalQuestionContainer.appendChild(questionElement);
