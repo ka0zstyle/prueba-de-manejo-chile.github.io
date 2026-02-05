@@ -3983,47 +3983,45 @@ window.addEventListener("click", (event) => {
 
 generateQuiz(); // Genera la primera pregunta al cargar la página
 
-submitBtn.addEventListener("click", checkAnswers);
+submitBtn.addEventListener("click", function() {
+    // Add visual feedback
+    this.style.opacity = '0.7';
+    this.style.pointerEvents = 'none';
+    
+    // Execute check
+    checkAnswers();
+    
+    // Reset after animation
+    setTimeout(() => {
+        this.style.opacity = '1';
+        this.style.pointerEvents = 'auto';
+    }, 300);
+});
+
 nextBtn.addEventListener("click", loadNextQuestion);
 
 // Keyboard shortcuts for better UX
 document.addEventListener('keydown', function(e) {
-    // Enter key on submit button
-    if (e.key === 'Enter' && submitBtn.style.display !== 'none' && !e.repeat) {
-        e.preventDefault();
-        checkAnswers();
+    const messageBox = document.getElementById("messageBox");
+    
+    // Enter key to submit answer
+    if (e.key === 'Enter' && !e.repeat) {
+        const submitVisible = window.getComputedStyle(submitBtn).display !== 'none';
+        if (submitVisible) {
+            e.preventDefault();
+            submitBtn.click();
+        }
     }
     
-    // Escape key to close modal
+    // Escape key to close modal and proceed
     if (e.key === 'Escape') {
-        const messageBox = document.getElementById("messageBox");
-        if (messageBox && messageBox.style.display !== 'none') {
+        const modalVisible = messageBox && window.getComputedStyle(messageBox).display !== 'none';
+        if (modalVisible) {
             messageBox.style.display = 'none';
             loadNextQuestion();
         }
     }
 });
-
-// Smooth scroll behavior for form submission
-submitBtn.addEventListener("click", function() {
-    // Add a subtle loading indicator
-    submitBtn.style.opacity = '0.7';
-    submitBtn.style.pointerEvents = 'none';
-    
-    setTimeout(() => {
-        submitBtn.style.opacity = '1';
-        submitBtn.style.pointerEvents = 'auto';
-    }, 300);
-});
-
-// Add progress animation
-function updateProgressBar() {
-    const progress = ((currentQuestion + 1) / questions.length) * 100;
-    const progressBar = document.querySelector('.progress-fill');
-    if (progressBar) {
-        progressBar.style.transition = 'width 0.5s ease';
-    }
-}
 
 // Auto-randomize questions on page load (call function directly instead of simulating click)
 if (randomizeQuestionsBtn && !isRandomizing) {
