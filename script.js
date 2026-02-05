@@ -3306,8 +3306,20 @@ let isRandomizing = false;
 // Evento de clic para el botón de alternancia
 randomizeQuestionsBtn.addEventListener("click", () => {
   if (isRandomizing) {
-    // Si las preguntas se están mostrando de manera aleatoria, restablece la página.
-    window.location.reload();
+    // Reset without showing intro modal - just reload questions
+    shuffleQuestions();
+    currentQuestion = 0;
+    score = 0;
+    
+    // Reset lifelines
+    lifelines.fiftyFifty = 3;
+    lifelines.skip = 3;
+    lifelines.hint = 3;
+    updateLifelineButtons();
+    saveLifelinesToStorage();
+    
+    updateScoreDisplay();
+    generateQuiz();
   } else {
     // Si no se están mostrando de manera aleatoria, mezcla las preguntas y comienza desde el principio.
     initializeRandomization();
@@ -3690,6 +3702,9 @@ function checkAnswers() {
 
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
+            
+            // Clear previous content first
+            messageText.innerHTML = '';
 
             if (isCorrect) {
                 messageText.innerHTML = "✓ Respuesta Correcta";
@@ -3705,7 +3720,8 @@ function checkAnswers() {
                 showSadEmoji();
             }
 
-            // Update message text and add next button
+            // Add next button after setting innerHTML
+            messageText.appendChild(document.createElement('br'));
             const nextBtnClone = nextBtn.cloneNode(true);
             nextBtnClone.style.display = "inline-block";
             nextBtnClone.style.marginTop = "1rem";
@@ -3713,7 +3729,6 @@ function checkAnswers() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
             };
-            messageText.appendChild(document.createElement('br'));
             messageText.appendChild(nextBtnClone);
 
             showMessageBox(messageBox);
@@ -3757,6 +3772,9 @@ function checkAnswers() {
 
         if (messageBox) {
             const messageText = messageBox.querySelector(".message-text");
+            
+            // Clear previous content first
+            messageText.innerHTML = '';
 
             if (isCorrect) {
                 messageText.innerHTML = "✓ Respuesta Correcta";
@@ -3771,7 +3789,7 @@ function checkAnswers() {
                 showSadEmoji();
             }
 
-            // Add next button to message
+            // Add next button after setting innerHTML
             messageText.appendChild(document.createElement('br'));
             const nextBtnClone = nextBtn.cloneNode(true);
             nextBtnClone.style.display = "inline-block";

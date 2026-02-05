@@ -282,20 +282,28 @@ body {
    PROGRESS BAR
    ============================================ */
 
+/* Stats Bar (Progress + Score Side by Side) */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
 .progress-container {
+  flex: 1;
   background: var(--bg-primary);
   border-radius: var(--radius-md);
   padding: var(--space-sm);
-  margin-bottom: var(--space-md);
   box-shadow: var(--shadow-sm);
 }
 
 .progress-bar {
-  height: 6px;
+  height: 4px;
   background: var(--bg-tertiary);
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 4px;
 }
 
 .progress-fill {
@@ -307,7 +315,7 @@ body {
 
 .progress-text {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
@@ -333,13 +341,13 @@ body {
 .score-display {
   background: var(--primary-light);
   color: var(--primary);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: center;
-  padding: var(--space-sm) var(--space-md);
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-md);
-  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Fieldset (Question Container) */
@@ -929,12 +937,28 @@ button {
 }
 
 /* Main Page Power-ups */
+/* Power-ups Section */
+.powerups-section {
+  margin-bottom: var(--space-md);
+}
+
+.powerups-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .main-powerups {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   justify-content: center;
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
+  padding: var(--space-sm);
   background: var(--bg-primary);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
@@ -944,26 +968,26 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-md);
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
   background: linear-gradient(135deg, var(--primary), var(--primary-hover));
   color: white;
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-base);
-  font-size: 0.875rem;
-  min-width: 100px;
-  box-shadow: var(--shadow-md);
+  font-size: 0.75rem;
+  min-width: 70px;
+  box-shadow: var(--shadow-sm);
 }
 
 .powerup-btn-main:hover:not(:disabled) {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--shadow-md);
 }
 
 .powerup-btn-main:active:not(:disabled) {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(-1px) scale(1.01);
 }
 
 .powerup-btn-main:disabled {
@@ -974,18 +998,18 @@ button {
 }
 
 .powerup-btn-main .powerup-icon {
-  font-size: 2rem;
+  font-size: 1.25rem;
   display: block;
 }
 
 .powerup-btn-main .powerup-count {
   font-weight: 700;
   color: white;
-  font-size: 1rem;
+  font-size: 0.75rem;
   background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.5rem;
+  padding: 0.125rem 0.375rem;
   border-radius: var(--radius-sm);
-  min-width: 2rem;
+  min-width: 1.5rem;
   text-align: center;
 }
 
@@ -995,18 +1019,36 @@ button {
 
 /* Mobile responsive for main power-ups */
 @media (max-width: 768px) {
+  .powerups-title {
+    font-size: 0.875rem;
+  }
+  
   .main-powerups {
-    gap: var(--space-sm);
-    padding: var(--space-sm);
+    gap: 0.375rem;
+    padding: 0.375rem;
   }
   
   .powerup-btn-main {
-    min-width: 80px;
-    padding: var(--space-sm);
+    min-width: 60px;
+    padding: 0.375rem 0.5rem;
   }
   
   .powerup-btn-main .powerup-icon {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .powerup-btn-main .powerup-count {
+    font-size: 0.625rem;
+  }
+  
+  .stats-bar {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .progress-container,
+  .score-display {
+    width: 100%;
   }
 }
 
