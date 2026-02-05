@@ -1574,6 +1574,13 @@ body.dark-mode .moving-car {
   font-weight: 700;
   color: var(--success);
   font-size: 1rem;
+}
+
+.leaderboard-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
   text-align: right;
 }
 

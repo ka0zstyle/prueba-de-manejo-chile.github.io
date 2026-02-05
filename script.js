@@ -3344,7 +3344,8 @@ function isTopScore(score) {
 
 function addToLeaderboard(name, score) {
     const leaderboard = getLeaderboard();
-    leaderboard.push({ name, score, date: new Date().toISOString() });
+    const date = new Date().toLocaleDateString('es-CL', { year: 'numeric', month: 'short', day: 'numeric' });
+    leaderboard.push({ name, score, date });
     leaderboard.sort((a, b) => b.score - a.score);
     if (leaderboard.length > 10) {
         leaderboard.length = 10;
@@ -3358,7 +3359,7 @@ function showLeaderboard(highlightScore = null) {
     if (leaderboard.length === 0) {
         leaderboardContent.innerHTML = '<div class="leaderboard-empty">No hay puntuaciones todavía. ¡Sé el primero!</div>';
     } else {
-        let html = '<table class="leaderboard-table"><thead><tr><th>Posición</th><th>Nombre</th><th>Puntuación</th></tr></thead><tbody>';
+        let html = '<table class="leaderboard-table"><thead><tr><th>Pos</th><th>Nombre</th><th>Puntos</th><th>Fecha</th></tr></thead><tbody>';
         
         leaderboard.forEach((entry, index) => {
             const isCurrentPlayer = highlightScore !== null && 
@@ -3374,6 +3375,7 @@ function showLeaderboard(highlightScore = null) {
                     <td class="leaderboard-rank ${rankClass}">${medal}</td>
                     <td class="leaderboard-name">${entry.name}</td>
                     <td class="leaderboard-score">${entry.score}/${questions.length}</td>
+                    <td class="leaderboard-date">${entry.date || ''}</td>
                 </tr>
             `;
         });
@@ -3408,7 +3410,9 @@ function promptForName(score) {
         submitNameBtn.style.display = 'inline-flex';
         submitNameBtn.onclick = function() {
             const playerNameInput = document.getElementById('playerName');
-            const playerName = playerNameInput.value.trim() || 'Anónimo';
+            const rawName = playerNameInput.value.trim();
+            // Sanitize input - remove HTML tags and limit to alphanumeric + spaces
+            const playerName = rawName.replace(/<[^>]*>/g, '').replace(/[^\w\s]/g, '').substring(0, 20) || 'Anónimo';
             addToLeaderboard(playerName, score);
             messageBox.style.display = 'none';
             showLeaderboard({ name: playerName, score });
@@ -3437,8 +3441,7 @@ function promptForName(score) {
 
 // Update strike display
 function updateStrikeDisplay() {
-    const hearts = '❤️'.repeat(strikes);
-    strikeDisplay.textContent = hearts || '💔';
+    strikeDisplay.textContent = strikes > 0 ? '❤️'.repeat(strikes) : '💔';
 }
 
 // Game over function
@@ -3453,7 +3456,7 @@ function showGameOver() {
             <div style="font-size: 3rem; margin-bottom: 1rem;">😢</div>
             <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">¡Se acabaron las vidas!</div>
             <div style="font-size: 1rem; margin-bottom: 1rem;">Puntuación final: ${score}/${questions.length}</div>
-            <div style="font-size: 0.875rem; color: var(--text-secondary);">Preguntas respondidas: ${currentQuestion + 1}</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Preguntas intentadas: ${currentQuestion}</div>
         `;
         
         messageText.appendChild(gameOverContent);
@@ -3680,7 +3683,7 @@ function useHint() {
         const questionObj = questions[currentQuestion];
         const hintText = questionObj.hint 
             ? `💡 Pista: ${questionObj.hint}` 
-            : `💡 Pista: Esta pregunta tiene ${questionObj.correctAnswers.length} respuesta(s) correcta(s)`;
+            : `💡 Pista: Lee cuidadosamente todas las opciones antes de responder`;
         
         const existingHint = document.querySelector('.hint-message');
         if (!existingHint) {
