@@ -3361,7 +3361,9 @@ function showLeaderboard(highlightScore = null) {
         let html = '<table class="leaderboard-table"><thead><tr><th>Posición</th><th>Nombre</th><th>Puntuación</th></tr></thead><tbody>';
         
         leaderboard.forEach((entry, index) => {
-            const isCurrentPlayer = highlightScore !== null && entry.score === highlightScore && entry.name === highlightScore.name;
+            const isCurrentPlayer = highlightScore !== null && 
+                entry.score === highlightScore.score && 
+                entry.name === highlightScore.name;
             const rankClass = index === 0 ? 'top-1' : index === 1 ? 'top-2' : index === 2 ? 'top-3' : '';
             const rowClass = isCurrentPlayer ? 'current-player' : '';
             
@@ -3450,7 +3452,8 @@ function showGameOver() {
         gameOverContent.innerHTML = `
             <div style="font-size: 3rem; margin-bottom: 1rem;">😢</div>
             <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">¡Se acabaron las vidas!</div>
-            <div style="font-size: 1rem; margin-bottom: 1rem;">Puntuación final: ${score}/${currentQuestion + 1}</div>
+            <div style="font-size: 1rem; margin-bottom: 1rem;">Puntuación final: ${score}/${questions.length}</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);">Preguntas respondidas: ${currentQuestion + 1}</div>
         `;
         
         messageText.appendChild(gameOverContent);
