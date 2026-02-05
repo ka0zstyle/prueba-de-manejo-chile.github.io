@@ -3503,8 +3503,8 @@ function checkAnswers() {
             const warning = document.createElement('div');
             warning.className = 'multiple-answers-warning';
             warning.textContent = `⚠️ Esta pregunta tiene ${questionObj.correctAnswers.length} respuestas correctas`;
-            warning.style.cssText = 'background: #fef3c7; border: 2px solid #f59e0b; color: #92400e; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; text-align: center; font-weight: 600;';
-            document.querySelector('fieldset').insertBefore(warning, document.querySelector('fieldset').firstChild.nextSibling);
+            const fieldset = document.querySelector('fieldset');
+            fieldset.insertBefore(warning, fieldset.firstChild.nextSibling);
         }
     }
 
@@ -3549,8 +3549,7 @@ function checkAnswers() {
                 messageText.innerHTML = `✗ Respuestas correctas:<br>${formattedCorrectAnswers}`;
             }
 
-            // Move next button inside modal
-            messageBox.innerHTML = messageText.outerHTML;
+            // Update message text and add next button
             const nextBtnClone = nextBtn.cloneNode(true);
             nextBtnClone.style.display = "inline-block";
             nextBtnClone.style.marginTop = "1rem";
@@ -3558,7 +3557,8 @@ function checkAnswers() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
             };
-            messageBox.appendChild(nextBtnClone);
+            messageText.appendChild(document.createElement('br'));
+            messageText.appendChild(nextBtnClone);
 
             showMessageBox(messageBox);
             submitBtn.style.display = "none";
@@ -3582,8 +3582,8 @@ function checkAnswers() {
                 // User selected wrong answer - show X
                 label.classList.add('incorrect-answer');
                 const xMark = document.createElement('span');
+                xMark.className = 'answer-marker incorrect';
                 xMark.textContent = ' ✗';
-                xMark.style.cssText = 'color: #ef4444; font-weight: bold; font-size: 1.5rem; margin-left: auto;';
                 label.appendChild(xMark);
             }
             
@@ -3591,8 +3591,8 @@ function checkAnswers() {
                 // Show correct answer with checkmark
                 label.classList.add('correct-answer');
                 const checkMark = document.createElement('span');
+                checkMark.className = 'answer-marker correct';
                 checkMark.textContent = ' ✓';
-                checkMark.style.cssText = 'color: #10b981; font-weight: bold; font-size: 1.5rem; margin-left: auto;';
                 label.appendChild(checkMark);
             }
         });
@@ -3613,8 +3613,7 @@ function checkAnswers() {
                 messageBox.classList.add("error");
             }
 
-            // Move next button inside modal
-            messageBox.innerHTML = messageText.outerHTML;
+            // Add next button to message
             const nextBtnClone = nextBtn.cloneNode(true);
             nextBtnClone.style.display = "inline-block";
             nextBtnClone.style.marginTop = "1rem";
@@ -3622,7 +3621,8 @@ function checkAnswers() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
             };
-            messageBox.appendChild(nextBtnClone);
+            messageText.appendChild(document.createElement('br'));
+            messageText.appendChild(nextBtnClone);
 
             showMessageBox(messageBox);
             submitBtn.style.display = "none";

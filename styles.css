@@ -415,6 +415,39 @@ label.incorrect-answer {
   background: #fee2e2;
 }
 
+/* Visual feedback markers */
+.answer-marker {
+  margin-left: auto;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.answer-marker.correct {
+  color: var(--success);
+}
+
+.answer-marker.incorrect {
+  color: var(--error);
+}
+
+/* Multiple answers warning */
+.multiple-answers-warning {
+  background: #fef3c7;
+  border: 2px solid var(--warning);
+  color: #92400e;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+body.dark-mode .multiple-answers-warning {
+  background: #78350f;
+  color: #fef3c7;
+}
+
 /* Checkbox Styling */
 input[type="checkbox"] {
   width: 24px;
