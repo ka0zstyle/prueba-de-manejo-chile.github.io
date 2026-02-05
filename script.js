@@ -3508,12 +3508,12 @@ function useFiftyFifty() {
         );
         
         if (incorrectOptions.length >= 2) {
-            // Fisher-Yates shuffle for proper randomization
-            for (let i = incorrectOptions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [incorrectOptions[i], incorrectOptions[j]] = [incorrectOptions[j], incorrectOptions[i]];
+            // Select 2 random indices without full shuffle for better performance
+            const indices = new Set();
+            while (indices.size < 2) {
+                indices.add(Math.floor(Math.random() * incorrectOptions.length));
             }
-            const toRemove = incorrectOptions.slice(0, 2);
+            const toRemove = Array.from(indices).map(i => incorrectOptions[i]);
             
             toRemove.forEach(checkbox => {
                 const label = checkbox.closest('label');
