@@ -3698,12 +3698,10 @@ function checkAnswers() {
                 score++;
                 triggerConfetti();
             } else {
-                messageText.innerHTML = "✗ Respuesta Incorrecta";
+                const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
+                messageText.innerHTML = `✗ Respuesta Incorrecta<br><br>Respuestas correctas:<br>${formattedCorrectAnswers}`;
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
-
-                const formattedCorrectAnswers = correctAnswers.map((answer, index) => `${questionObj.options[index]}: — ${answer}`).join('<br>');
-                messageText.innerHTML = `✗ Respuestas correctas:<br>${formattedCorrectAnswers}`;
                 showSadEmoji();
             }
 
