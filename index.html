@@ -38,7 +38,7 @@
     <!-- Open Graph Tags for Social Media -->
     <meta property="og:title" content="Test de Manejo Chile - Practica tu Examen de Conducir">
     <meta property="og:description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica. Responde preguntas sobre normas de tráfico y seguridad vial.">
-    <meta property="og:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png">
+    <meta property="og:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.webp">
     <meta property="og:url" content="https://test-de-manejo-chile.netlify.app">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_CL">
@@ -47,7 +47,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Test de Manejo Chile - Practica tu Examen de Conducir">
     <meta name="twitter:description" content="Prepara tu examen de licencia de manejo en Chile con nuestro cuestionario de práctica.">
-    <meta name="twitter:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.png">
+    <meta name="twitter:image" content="https://test-de-manejo-chile.netlify.app/imagen/fondo/4.webp">
 
     <!-- Schema markup for SEO -->
     <script type="application/ld+json">
@@ -135,7 +135,7 @@
     <div id="intro-header" class="intro-modal">
         <div class="intro-content">
             <h1>¡Prepárate para tu Examen de Manejo en Chile!</h1>
-            <img src="https://github.com/ka0zstyle/prueba-de-manejo-chile.github.io/blob/main/imagen/fondo/4.png?raw=true" alt="Imagen de fondo" class="intro-image">
+            <img src="https://github.com/ka0zstyle/prueba-de-manejo-chile.github.io/blob/main/imagen/fondo/4.webp?raw=true" alt="Imagen de fondo" class="intro-image">
             <p>Con nuestro Cuestionario de Práctica para la Licencia de Manejo de Chile, estarás bien preparado para superar tu examen teórico de conducción.</p>
             <button id="start-quiz-button" class="btn-primary-large">Comenzar el Cuestionario</button>
         </div>
@@ -175,6 +175,12 @@
                     <label class="sidebar-label">Tamaño de Texto</label>
                     <input type="range" id="fontSizeControl" class="slider" min="14" max="22" step="1" value="14">
                     <span id="fontSizeValue" class="slider-value">14px</span>
+                </div>
+
+                <div class="sidebar-section">
+                    <button id="viewLeaderboardBtn" class="btn-secondary btn-full">
+                        🏆 Ver Tabla de Líderes
+                    </button>
                 </div>
 
                 <div class="sidebar-stats">
@@ -263,6 +269,20 @@
             </div>
             <div class="modal-body">
                 <div id="modalQuestionContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>🏆 Tabla de Líderes</h3>
+                <button id="closeLeaderboard" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="leaderboardContent"></div>
             </div>
         </div>
     </div>

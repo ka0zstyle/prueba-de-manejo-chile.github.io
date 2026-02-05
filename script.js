@@ -3322,6 +3322,117 @@ const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
 const strikeDisplay = document.getElementById("strike-display");
 
+// Leaderboard elements
+const leaderboardModal = document.getElementById("leaderboardModal");
+const closeLeaderboard = document.getElementById("closeLeaderboard");
+const leaderboardContent = document.getElementById("leaderboardContent");
+
+// Leaderboard functions
+function getLeaderboard() {
+    const data = localStorage.getItem('drivingTestLeaderboard');
+    return data ? JSON.parse(data) : [];
+}
+
+function saveLeaderboard(leaderboard) {
+    localStorage.setItem('drivingTestLeaderboard', JSON.stringify(leaderboard));
+}
+
+function isTopScore(score) {
+    const leaderboard = getLeaderboard();
+    return leaderboard.length < 10 || score > leaderboard[leaderboard.length - 1].score;
+}
+
+function addToLeaderboard(name, score) {
+    const leaderboard = getLeaderboard();
+    leaderboard.push({ name, score, date: new Date().toISOString() });
+    leaderboard.sort((a, b) => b.score - a.score);
+    if (leaderboard.length > 10) {
+        leaderboard.length = 10;
+    }
+    saveLeaderboard(leaderboard);
+}
+
+function showLeaderboard(highlightScore = null) {
+    const leaderboard = getLeaderboard();
+    
+    if (leaderboard.length === 0) {
+        leaderboardContent.innerHTML = '<div class="leaderboard-empty">No hay puntuaciones todavía. ¡Sé el primero!</div>';
+    } else {
+        let html = '<table class="leaderboard-table"><thead><tr><th>Posición</th><th>Nombre</th><th>Puntuación</th></tr></thead><tbody>';
+        
+        leaderboard.forEach((entry, index) => {
+            const isCurrentPlayer = highlightScore !== null && entry.score === highlightScore && entry.name === highlightScore.name;
+            const rankClass = index === 0 ? 'top-1' : index === 1 ? 'top-2' : index === 2 ? 'top-3' : '';
+            const rowClass = isCurrentPlayer ? 'current-player' : '';
+            
+            const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : (index + 1);
+            
+            html += `
+                <tr class="${rowClass}">
+                    <td class="leaderboard-rank ${rankClass}">${medal}</td>
+                    <td class="leaderboard-name">${entry.name}</td>
+                    <td class="leaderboard-score">${entry.score}/${questions.length}</td>
+                </tr>
+            `;
+        });
+        
+        html += '</tbody></table>';
+        leaderboardContent.innerHTML = html;
+    }
+    
+    leaderboardModal.style.display = 'block';
+}
+
+function promptForName(score) {
+    const messageBox = document.getElementById("messageBox");
+    if (messageBox) {
+        const messageText = messageBox.querySelector(".message-text");
+        messageText.innerHTML = '';
+        
+        const namePrompt = document.createElement('div');
+        namePrompt.innerHTML = `
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🏆</div>
+            <div style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">¡Felicidades!</div>
+            <div style="font-size: 1rem; margin-bottom: 1rem;">Has logrado entrar en el Top 10</div>
+            <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem;">${score}/${questions.length} correctas</div>
+            <input type="text" id="playerName" class="name-input" placeholder="Ingresa tu nombre" maxlength="20" />
+        `;
+        
+        messageText.appendChild(namePrompt);
+        
+        const submitNameBtn = document.createElement('button');
+        submitNameBtn.className = 'btn-primary';
+        submitNameBtn.textContent = 'Guardar';
+        submitNameBtn.style.display = 'inline-flex';
+        submitNameBtn.onclick = function() {
+            const playerNameInput = document.getElementById('playerName');
+            const playerName = playerNameInput.value.trim() || 'Anónimo';
+            addToLeaderboard(playerName, score);
+            messageBox.style.display = 'none';
+            showLeaderboard({ name: playerName, score });
+        };
+        messageText.appendChild(submitNameBtn);
+        
+        const skipBtn = document.createElement('button');
+        skipBtn.className = 'btn-secondary';
+        skipBtn.textContent = 'Omitir';
+        skipBtn.style.display = 'inline-flex';
+        skipBtn.style.marginLeft = 'var(--space-sm)';
+        skipBtn.onclick = function() {
+            messageBox.style.display = 'none';
+        };
+        messageText.appendChild(skipBtn);
+        
+        messageBox.classList.remove("error");
+        messageBox.classList.add("message-box");
+        showMessageBox(messageBox);
+        
+        setTimeout(() => {
+            document.getElementById('playerName').focus();
+        }, 300);
+    }
+}
+
 // Update strike display
 function updateStrikeDisplay() {
     const hearts = '❤️'.repeat(strikes);
@@ -3370,6 +3481,7 @@ const isDarkMode = localStorage.getItem("darkMode") === "true";
 const originalQuestions = questions.slice();
 const fontSizeControl = document.getElementById("fontSizeControl");
 const fontSizeValue = document.getElementById("fontSizeValue");
+const viewLeaderboardBtn = document.getElementById("viewLeaderboardBtn");
 const startQuizButton = document.getElementById("start-quiz-button");
 const introHeader = document.getElementById("intro-header");
 const progressFill = document.getElementById("progressFill");
@@ -3418,6 +3530,11 @@ fontSizeControl.addEventListener("input", () => {
     
     root.style.setProperty("--base-font-size", newSize);
     fontSizeValue.textContent = newSize;
+});
+
+// View leaderboard button
+viewLeaderboardBtn.addEventListener("click", () => {
+    showLeaderboard();
 });
 
 
@@ -3928,6 +4045,13 @@ function loadNextQuestion() {
             form.appendChild(completionMessage);
             
             resultDiv.textContent = "";
+            
+            // Check if score makes top 10
+            if (isTopScore(score)) {
+                setTimeout(() => {
+                    promptForName(score);
+                }, 1000);
+            }
         }, ANIMATION_DURATION.BASE);
         
         submitBtn.style.display = "none";
@@ -3987,6 +4111,11 @@ showQuestionBtn.addEventListener("click", () => {
 closeModal.addEventListener("click", () => {
     // Oculta el cuadro de pregunta modal
     questionModal.style.display = "none";
+});
+
+// Close leaderboard modal
+closeLeaderboard.addEventListener("click", () => {
+    leaderboardModal.style.display = "none";
 });
 
 // Cierra el cuadro de pregunta modal si se hace clic fuera de él
