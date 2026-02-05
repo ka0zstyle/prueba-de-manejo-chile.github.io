@@ -3411,8 +3411,8 @@ function promptForName(score) {
         submitNameBtn.onclick = function() {
             const playerNameInput = document.getElementById('playerName');
             const rawName = playerNameInput.value.trim();
-            // Sanitize input - remove HTML tags and limit to alphanumeric + spaces
-            const playerName = rawName.replace(/<[^>]*>/g, '').replace(/[^\w\s]/g, '').substring(0, 20) || 'Anónimo';
+            // Sanitize input - only allow letters, numbers, and spaces
+            const playerName = rawName.replace(/[^\w\s\u00C0-\u017F]/g, '').substring(0, 20) || 'Anónimo';
             addToLeaderboard(playerName, score);
             messageBox.style.display = 'none';
             showLeaderboard({ name: playerName, score });
