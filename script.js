@@ -3508,12 +3508,14 @@ function useFiftyFifty() {
         );
         
         if (incorrectOptions.length >= 2) {
-            // Select 2 random indices without full shuffle for better performance
-            const indices = new Set();
-            while (indices.size < 2) {
-                indices.add(Math.floor(Math.random() * incorrectOptions.length));
-            }
-            const toRemove = Array.from(indices).map(i => incorrectOptions[i]);
+            // Select 2 random distinct indices
+            const firstIndex = Math.floor(Math.random() * incorrectOptions.length);
+            let secondIndex;
+            do {
+                secondIndex = Math.floor(Math.random() * incorrectOptions.length);
+            } while (secondIndex === firstIndex);
+            
+            const toRemove = [incorrectOptions[firstIndex], incorrectOptions[secondIndex]];
             
             toRemove.forEach(checkbox => {
                 const label = checkbox.closest('label');
@@ -3548,7 +3550,7 @@ function useHint() {
             hint.className = 'multiple-answers-warning hint-message';
             hint.textContent = hintText;
             const fieldset = document.querySelector('fieldset');
-            if (fieldset) {
+            if (fieldset && fieldset.firstChild) {
                 fieldset.insertBefore(hint, fieldset.firstChild.nextSibling);
                 
                 powerUps.hint--;
