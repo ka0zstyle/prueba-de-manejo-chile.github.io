@@ -3322,24 +3322,24 @@ const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
 
-scoreDiv.style.fontSize = "20px"
-scoreDiv.style.border = "2px solid gold"; // Puedes ajustar el ancho del borde y el color (en este caso, "gold" para dorado)
-scoreDiv.style.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)"; // Puedes ajustar los valores de sombra
-scoreDiv.style.color = "gold"; // Color del texto dorado
- 
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
 const questionContainer = document.getElementById("questionContainer");
 const questionModal = document.getElementById("questionModal");
 const closeModal = document.getElementById("closeModal");
-const menuButton = document.getElementById("menuButton");
-const menuOptions = document.getElementById("menuOptions");
-const darkModeButton = document.getElementById("darkModeButton");
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+const darkModeToggle = document.getElementById("darkModeToggle");
 const isDarkMode = localStorage.getItem("darkMode") === "true";
 const originalQuestions = questions.slice();
 const fontSizeControl = document.getElementById("fontSizeControl");
+const fontSizeValue = document.getElementById("fontSizeValue");
 const startQuizButton = document.getElementById("start-quiz-button");
 const introHeader = document.getElementById("intro-header");
+const progressFill = document.getElementById("progressFill");
+const progressPercentage = document.getElementById("progressPercentage");
+const currentQuestionNum = document.getElementById("currentQuestionNum");
+const totalQuestions = document.getElementById("totalQuestions");
 
 // Animation constants for consistency
 const ANIMATION_DURATION = {
@@ -3348,91 +3348,86 @@ const ANIMATION_DURATION = {
     SLOW: 500
 };
 
-// Agrega un controlador de eventos para el clic en el botón de inicio con animación
-startQuizButton.addEventListener("click", function(event) {
-    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    
-    // Añade animación de salida suave
-    introHeader.style.animation = `fadeOut ${ANIMATION_DURATION.BASE}ms ease-out forwards`;
-    
-    setTimeout(() => {
-        introHeader.style.display = "none"; // Oculta el encabezado introductorio
-        introHeader.style.animation = ""; // Limpia la animación
-    }, ANIMATION_DURATION.BASE);
+// Initialize total questions display
+totalQuestions.textContent = questions.length;
+
+// Sidebar toggle functionality
+menuToggle.addEventListener("click", function() {
+    sidebar.classList.toggle("collapsed");
+    sidebar.classList.toggle("active");
 });
 
-fontSizeControl.addEventListener("input", () => {
-const root = document.documentElement;
-const newSize = fontSizeControl.value + "px";
+// Start quiz button with animation
+startQuizButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    introHeader.style.animation = "fadeOut 0.3s ease-out forwards";
+    
+    setTimeout(() => {
+        introHeader.style.display = "none";
+        introHeader.style.animation = "";
+    }, 300);
+});
 
-  root.style.setProperty("--base-font-size", newSize);
-  root.style.setProperty("--checkbox-size", newSize);
+// Font size control with live preview
+fontSizeControl.addEventListener("input", () => {
+    const root = document.documentElement;
+    const newSize = fontSizeControl.value + "px";
+    
+    root.style.setProperty("--base-font-size", newSize);
+    fontSizeValue.textContent = newSize;
 });
 
 
 function enableDarkMode() {
     document.body.classList.add("dark-mode");
     localStorage.setItem("darkMode", "true");
-    darkModeButton.textContent = "Desactivar Modo Oscuro";
-
-
-    // Cambia el color de las leyendas de preguntas en modo oscuro
-        document.body.classList.add("dark-mode");
-    const questionLegends = document.querySelectorAll(".question-legend");
-    questionLegends.forEach((legend) => {
-            const searchQuestionContainer = document.querySelector(".search-question-container");
-    searchQuestionContainer.classList.add("dark-mode");
-        legend.style.color = "darkorange"; // Cambia "darkorange" al color oscuro deseado
-    });
+    const themeIcon = darkModeToggle.querySelector(".theme-icon");
+    if (themeIcon) {
+        themeIcon.textContent = "☀️";
+    }
 }
 
 function disableDarkMode() {
     document.body.classList.remove("dark-mode");
     localStorage.setItem("darkMode", "false");
-    darkModeButton.textContent = "Activar Modo Oscuro";
-
-    // Restablece el color de las leyendas de preguntas al desactivar el modo oscuro
-        const searchQuestionContainer = document.querySelector(".search-question-container");
-    searchQuestionContainer.classList.remove("dark-mode");
-    const questionLegends = document.querySelectorAll(".question-legend");
-    questionLegends.forEach((legend) => {
-        legend.style.color = ""; // Elimina el color personalizado para volver al valor original
-    });
+    const themeIcon = darkModeToggle.querySelector(".theme-icon");
+    if (themeIcon) {
+        themeIcon.textContent = "🌙";
+    }
 }
 
-// Aplica el modo oscuro si estaba activado
+// Dark mode toggle
+darkModeToggle.addEventListener("click", function() {
+    if (document.body.classList.contains("dark-mode")) {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+    }
+});
+
+// Initialize dark mode from localStorage
 if (isDarkMode) {
     enableDarkMode();
 }
 
-    menuButton.addEventListener("click", function() {
-        if (menuOptions.style.display === "none" || menuOptions.style.display === "") {
-            menuOptions.style.display = "block";
-        } else {
-            menuOptions.style.display = "none";
-        }
-    });
-
 scoreDiv.textContent = `Puntuación: ${score}/${questions.length}`;
 
-// Función para actualizar la barra de progreso
+// Updated progress bar function for new layout
 function updateProgressBar() {
     const progress = ((currentQuestion + 1) / questions.length) * 100;
-    let progressBar = document.querySelector('.progress-bar');
     
-    if (!progressBar) {
-        // Crear barra de progreso si no existe
-        progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        progressBar.innerHTML = '<div class="progress-fill"></div>';
-        
-        const container = document.querySelector('.container');
-        const heading = container.querySelector('h2');
-        heading.after(progressBar);
+    if (progressFill) {
+        progressFill.style.width = `${progress}%`;
     }
     
-    const progressFill = progressBar.querySelector('.progress-fill');
-    progressFill.style.width = `${progress}%`;
+    if (progressPercentage) {
+        progressPercentage.textContent = `${Math.round(progress)}%`;
+    }
+    
+    if (currentQuestionNum) {
+        currentQuestionNum.textContent = currentQuestion + 1;
+    }
 }
 
 // Función para mostrar mensaje con animación
@@ -3757,14 +3752,6 @@ closeModal.addEventListener("click", () => {
 window.addEventListener("click", (event) => {
     if (event.target === questionModal) {
         questionModal.style.display = "none";
-    }
-});
-
-darkModeButton.addEventListener("click", () => {
-    if (document.body.classList.contains("dark-mode")) {
-        disableDarkMode();
-    } else {
-        enableDarkMode();
     }
 });
 
