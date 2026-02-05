@@ -3411,14 +3411,14 @@ function generateQuiz() {
 
     if (questionObj.image) {
         const image = document.createElement("img");
-        const imageSrc = `imagen/${questionObj.number}.png`;
+        const imageSrc = `imagen/${questionObj.number}.webp`;
         image.setAttribute("src", imageSrc);
         image.setAttribute("alt", `${questionObj.number}`);
         fieldset.appendChild(image);
     } else {
         // Si no hay imagen, muestra la imagen predeterminada
         const image = document.createElement("img");
-        const imageSrc = "imagen/1.png";
+        const imageSrc = "imagen/1.webp";
         image.setAttribute("src", imageSrc);
         image.setAttribute("alt", "Pregunta sin imagen");
         fieldset.appendChild(image);
@@ -3588,7 +3588,7 @@ function displayQuestionInModal(question) {
     // Si la pregunta tiene una imagen, crea y agrega un elemento de imagen
     if (question.image) {
         const imageElement = document.createElement("img");
-        imageElement.src = `imagen/${question.number}.png`;
+        imageElement.src = `imagen/${question.number}.webp`;
         imageElement.alt = `Pregunta ${question.number}`;
         modalQuestionContainer.appendChild(imageElement);
     }

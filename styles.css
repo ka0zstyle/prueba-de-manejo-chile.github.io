@@ -303,7 +303,7 @@ input[type="checkbox"] {
 body {
 margin: 0;
 padding: 0;
-background-image: url('imagen/fondo/1.png'); /* Coloca la imagen de fondo aquí */
+background-image: url('imagen/fondo/1.webp'); /* Coloca la imagen de fondo aquí */
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;
