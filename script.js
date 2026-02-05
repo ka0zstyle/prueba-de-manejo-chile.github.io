@@ -3772,6 +3772,7 @@ function checkAnswers() {
             }
 
             // Add next button to message
+            messageText.appendChild(document.createElement('br'));
             const nextBtnClone = nextBtn.cloneNode(true);
             nextBtnClone.style.display = "inline-block";
             nextBtnClone.style.marginTop = "1rem";
@@ -3779,7 +3780,6 @@ function checkAnswers() {
                 messageBox.style.display = "none";
                 loadNextQuestion();
             };
-            messageText.appendChild(document.createElement('br'));
             messageText.appendChild(nextBtnClone);
 
             showMessageBox(messageBox);

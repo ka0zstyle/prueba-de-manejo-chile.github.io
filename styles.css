@@ -928,6 +928,88 @@ button {
   color: var(--text-tertiary);
 }
 
+/* Main Page Power-ups */
+.main-powerups {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.powerup-btn-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 0.875rem;
+  min-width: 100px;
+  box-shadow: var(--shadow-md);
+}
+
+.powerup-btn-main:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: var(--shadow-xl);
+}
+
+.powerup-btn-main:active:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.powerup-btn-main:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, var(--text-tertiary), var(--text-secondary));
+  transform: none;
+}
+
+.powerup-btn-main .powerup-icon {
+  font-size: 2rem;
+  display: block;
+}
+
+.powerup-btn-main .powerup-count {
+  font-weight: 700;
+  color: white;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  min-width: 2rem;
+  text-align: center;
+}
+
+.powerup-btn-main:disabled .powerup-count {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Mobile responsive for main power-ups */
+@media (max-width: 768px) {
+  .main-powerups {
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+  
+  .powerup-btn-main {
+    min-width: 80px;
+    padding: var(--space-sm);
+  }
+  
+  .powerup-btn-main .powerup-icon {
+    font-size: 1.5rem;
+  }
+}
+
 /* Disabled option from 50/50 power-up */
 .option-disabled {
   opacity: 0.3;
