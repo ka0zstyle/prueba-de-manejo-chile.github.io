@@ -3324,7 +3324,6 @@ const scoreDiv = document.getElementById("score");
 
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
-const questionContainer = document.getElementById("questionContainer");
 const questionModal = document.getElementById("questionModal");
 const closeModal = document.getElementById("closeModal");
 const menuToggle = document.getElementById("menuToggle");
