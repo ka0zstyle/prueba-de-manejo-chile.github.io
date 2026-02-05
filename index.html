@@ -177,12 +177,6 @@
                     <span id="fontSizeValue" class="slider-value">14px</span>
                 </div>
 
-                <div class="sidebar-section">
-                    <button id="randomizeQuestionsBtn" class="btn-secondary btn-full">
-                        🔀 Preguntas Aleatorias
-                    </button>
-                </div>
-
                 <div class="sidebar-stats">
                     <div class="stat-item">
                         <div class="stat-label">Pregunta Actual</div>
@@ -210,6 +204,9 @@
                     </div>
                 </div>
                 
+                <!-- Strike Display -->
+                <div id="strike-display" class="score-display"></div>
+                
                 <!-- Score Display -->
                 <div id="score" class="score-display"></div>
             </div>
@@ -223,10 +220,6 @@
                         <button id="fiftyFiftyBtn" class="powerup-btn-main" title="Eliminar 2 respuestas incorrectas" aria-label="Comodín 50/50, 3 restantes">
                             <span class="powerup-icon">50/50</span>
                             <span class="powerup-count" id="fiftyFiftyCount">3</span>
-                        </button>
-                        <button id="skipBtn" class="powerup-btn-main" title="Saltar pregunta" aria-label="Saltar pregunta, 3 restantes">
-                            <span class="powerup-icon">⏭️</span>
-                            <span class="powerup-count" id="skipCount">3</span>
                         </button>
                         <button id="hintBtn" class="powerup-btn-main" title="Mostrar pista" aria-label="Mostrar pista, 3 restantes">
                             <span class="powerup-icon">💡</span>

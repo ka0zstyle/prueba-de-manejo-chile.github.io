@@ -9,7 +9,8 @@ const questions = [
             "C) Usar su freno de mano.",
             "D) Consultar con su mecánico lo antes posible."    ],
                image: false,
-        correctAnswers: ["D) Consultar con su mecánico lo antes posible."]},
+        correctAnswers: ["D) Consultar con su mecánico lo antes posible."],
+        hint: "Un desvío al frenar indica un problema mecánico serio que requiere revisión profesional"},
     
     
     {number: 2,
@@ -19,7 +20,8 @@ const questions = [
             "C) Frenos mal ajustados.",
             "D) Neumáticos con presión de aire inadecuada."],
                image: false,
-        correctAnswers: ["C) Frenos mal ajustados."]},
+        correctAnswers: ["C) Frenos mal ajustados."],
+        hint: "Piense en qué parte del sistema de frenos causaría un desequilibrio entre las ruedas"},
     
     
     {number: 3,
@@ -29,7 +31,8 @@ const questions = [
             "C) Continuar porque sabe que se detendrá algunos kilómetros más allá.",
             "D) Detenerse e investigar el problema."],
                image: false,
-        correctAnswers: ["D) Detenerse e investigar el problema."]},
+        correctAnswers: ["D) Detenerse e investigar el problema."],
+        hint: "Un olor fuerte a gasolina puede indicar una fuga peligrosa que requiere atención inmediata"},
     
     
     {number: 4,
@@ -39,7 +42,8 @@ const questions = [
             "C) Usando gasolina sin plomo.",
             "D) Revisando su vehículo ante cualquier olor a gasolina extraño."],
                image: false,
-        correctAnswers: ["D) Revisando su vehículo ante cualquier olor a gasolina extraño."]},
+        correctAnswers: ["D) Revisando su vehículo ante cualquier olor a gasolina extraño."],
+        hint: "La prevención de incendios está relacionada con detectar fugas de combustible"},
     
     
     {number: 5,
@@ -49,7 +53,8 @@ const questions = [
             "C) Para poder efectuar los cambios de marcha más rápidamente.",
             "D) Para poder caminar sin problemas en el caso que necesite solicitar ayuda."],
                image: false,
-        correctAnswers: ["A) Para tener un adecuado control de los pedales."]},
+        correctAnswers: ["A) Para tener un adecuado control de los pedales."],
+        hint: "La respuesta correcta se enfoca en la seguridad durante la conducción, no después"},
     
     
     {number: 6,
@@ -59,7 +64,8 @@ const questions = [
             "C) Una columna de dirección colapsable.",
             "D) Un asiento con apoya-cabeza ajustado en forma apropiada."],
                 image: false,
-        correctAnswers: ["D) Un asiento con apoya-cabeza ajustado en forma apropiada."]},
+        correctAnswers: ["D) Un asiento con apoya-cabeza ajustado en forma apropiada."],
+        hint: "Piense en qué elemento protege específicamente la zona del cuello"},
     
     
     {number: 7,
@@ -68,9 +74,9 @@ const questions = [
             "B) Intermitentes de advertencia de peligro.",
             "C) Luces altas.",
             "D) Freno de mano puesto."],
-        image: true
-        ,
-        correctAnswers: ["B) Intermitentes de advertencia de peligro."]},
+        image: true,
+        correctAnswers: ["B) Intermitentes de advertencia de peligro."],
+        hint: "Observe la forma del símbolo - dos flechas indica intermitentes"},
     
     
     {number: 8,
@@ -80,7 +86,8 @@ const questions = [
             "C) Cuando los neumáticos están fríos.",
             "D) Cuando los neumáticos están calientes."],
                 image: false,
-        correctAnswers: ["C) Cuando los neumáticos están fríos."]},
+        correctAnswers: ["C) Cuando los neumáticos están fríos."],
+        hint: "Para una medición precisa, la temperatura de los neumáticos debe ser estable"},
     
     
     {number: 9,
@@ -88,10 +95,9 @@ const questions = [
         options: ["A) Cuando los neumáticos están fríos.",
             "B) Cuando los neumáticos están calientes.",
             "C) En cualquier momento, porque da igual que los neumáticos estén fríos o calientes."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) Cuando los neumáticos están fríos."]},
+        image: false,
+        correctAnswers: ["A) Cuando los neumáticos están fríos."],
+        hint: "El calor afecta la presión del aire, necesitamos condiciones estándar para medir"},
     
     
     {number: 10,
@@ -100,10 +106,9 @@ const questions = [
             "B) El anticongelante.",
             "C) El agua de la batería.",
             "D) El líquido refrigerante."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) El líquido de freno."]},
+        image: false,
+        correctAnswers: ["A) El líquido de freno."],
+        hint: "Piense en qué sistema es crítico para detener el vehículo de forma segura"},
     
     
     {number: 11,
@@ -112,10 +117,9 @@ const questions = [
             "B) Frenando suavemente, presionando el pedal de embrague y tirando el freno de mano justo antes de detenerse.",
             "C) Poniendo la palanca de cambio en neutro, frenando fuerte y luego soltando el freno justo antes de detenerse.",
             "D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."]},
+        image: false,
+        correctAnswers: ["D) Frenando suavemente, luego un poco más fuerte cuando comienza a detenerse y después aflojando de a poco el freno antes de detenerse."],
+        hint: "Una técnica de frenado suave y gradual es la más segura y cómoda"},
     
     
     {number: 12,
@@ -124,10 +128,9 @@ const questions = [
             "B) Cuando se estacione en doble fila respecto a otro vehículo estacionado junto a la cuneta.",
             "C) Cuando estacione junto a una cuneta en la que hay línea amarilla pintada.",
             "D) Cuando sus señalizadores de viraje no estén funcionando."],
-        image: false
-        ,
-        
-        correctAnswers: ["A) Cuando esté en pana obstruyendo el tránsito."]},
+        image: false,
+        correctAnswers: ["A) Cuando esté en pana obstruyendo el tránsito."],
+        hint: "Las luces de peligro se usan cuando el vehículo representa un obstáculo inesperado"},
     
     
     {number: 13,
@@ -136,10 +139,9 @@ const questions = [
             "B) Para advertir a quienes vienen detrás de un peligro que hay más adelante.",
             "C) Para advertir a quienes vienen detrás suyo que usted pretende virar.",
             "D) Para advertir a los demás que usted tiene prisa."],
-        image: false
-        ,
-        
-        correctAnswers: ["B) Para advertir a quienes vienen detrás de un peligro que hay más adelante."]},
+        image: false,
+        correctAnswers: ["B) Para advertir a quienes vienen detrás de un peligro que hay más adelante."],
+        hint: "Las luces de peligro alertan sobre situaciones de emergencia o peligro inminente"},
     
     
     {number: 14,
@@ -148,10 +150,9 @@ const questions = [
             "B) Cuando esté siendo remolcado.",
             "C) Cuando esté retrocediendo en una calle de poco tránsito.",
             "D) Cuando esté en pana y obstaculizando el tránsito."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Cuando esté en pana y obstaculizando el tránsito."]},
+        image: false,
+        correctAnswers: ["D) Cuando esté en pana y obstaculizando el tránsito."],
+        hint: "Las luces de peligro se activan cuando el vehículo está detenido bloqueando la vía"},
     
     
     {number: 15,
@@ -160,10 +161,9 @@ const questions = [
             "B) Neumáticos poco inflados.",
             "C) Volante de dirección no centrado.",
             "D) Amortiguadores gastados."],
-        image: false
-        ,
-        
-        correctAnswers: ["D) Amortiguadores gastados."]},
+        image: false,
+        correctAnswers: ["D) Amortiguadores gastados."],
+        hint: "El rebote o balanceo excesivo indica problemas en el sistema de suspensión"},
     
     
     {number: 16,
@@ -172,10 +172,9 @@ const questions = [
             "B) Para no desgastar el motor.",
             "C) Para ayudar a evitar que el automóvil se roncee.",
             "D) Para evitar que el automóvil se incline hacia un lado."],
-        image: false
-        ,
-        
-        correctAnswers: ["C) Para ayudar a evitar que el automóvil se roncee."]},
+        image: false,
+        correctAnswers: ["C) Para ayudar a evitar que el automóvil se roncee."],
+        hint: "La presión correcta mejora la estabilidad y tracción del vehículo en la carretera"},
     
     
     {number: 17,
@@ -184,10 +183,9 @@ const questions = [
             "B) Aceleraciones en curvas.",
             "C) Frecuentes frenadas y aceleraciones.",
             "D) Conducción en marchas altas."],
-        image: false
-        ,
-        
-        correctAnswers: ["C) Frecuentes frenadas y aceleraciones."]},
+        image: false,
+        correctAnswers: ["C) Frecuentes frenadas y aceleraciones."],
+        hint: "Los cambios bruscos de velocidad consumen más combustible que la conducción suave"},
     
     
     {number: 18,
@@ -196,10 +194,9 @@ const questions = [
             "B) 4.0 mm",
             "C) 1.6 mm",
             "D) 1.0 mm"],
-        image: false
-        ,
-        
-        correctAnswers: ["C) 1.6 mm"]},
+        image: false,
+        correctAnswers: ["C) 1.6 mm"],
+        hint: "Existe un mínimo legal establecido para garantizar la seguridad del agarre"},
     
     
     {number: 19,
@@ -209,11 +206,10 @@ const questions = [
             "C) Detenerse lentamente al costado de la vía.",
             "D) Detener el vehículo frenando lo más fuerte que pueda.",
             "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."],
-        image: false
-        ,
-        
+        image: false,
         correctAnswers: ["C) Detenerse lentamente al costado de la vía.", 
-    "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."]},
+    "E) Girar el volante hacia el mismo lado hacia el cual se desvía la cola del vehículo."],
+        hint: "Mantenga el control y busque un lugar seguro - esta pregunta tiene 2 respuestas correctas"},
     
     
     {number: 20,
@@ -223,11 +219,10 @@ const questions = [
             "C) Frenar rápida y firmemente.",
             "D) Sostener firmemente el volante manteniendo la trayectoria.",
             "E) Sostener el volante con una mano advirtiendo con la otra a los demás que usted se detendrá."],
-        image: false
-        ,
-        
+        image: false,
         correctAnswers: ["B) Frenar suavemente o dejar que el vehículo siga hasta detenerse.", 
-    "D) Sostener firmemente el volante manteniendo la trayectoria."]},
+    "D) Sostener firmemente el volante manteniendo la trayectoria."],
+        hint: "Controle el volante y frene suavemente - esta pregunta tiene 2 respuestas correctas"},
     
     
      {number: 21,
@@ -3282,49 +3277,21 @@ const questions = [
 let currentQuestion = 0;
 let messageText;
 let score = 0; // Contador de puntuación
+let strikes = 3; // Strike system - starts with 3
 const form = document.getElementById("quizForm");
-const randomizeQuestionsBtn = document.getElementById("randomizeQuestionsBtn");
 
 // Power-ups system
 const INITIAL_POWERUP_COUNT = 3;
 
 let powerUps = {
     fiftyFifty: INITIAL_POWERUP_COUNT,
-    skip: INITIAL_POWERUP_COUNT,
     hint: INITIAL_POWERUP_COUNT
 };
 
 let usedPowerUps = {
     fiftyFifty: false,
-    skip: false,
     hint: false
 };
-
-// Variable para llevar un registro de si las preguntas se están mostrando de manera aleatoria o no.
-let isRandomizing = false;
-
-// Evento de clic para el botón de alternancia
-randomizeQuestionsBtn.addEventListener("click", () => {
-  if (isRandomizing) {
-    // Reset without showing intro modal - just reload questions
-    shuffleQuestions();
-    currentQuestion = 0;
-    score = 0;
-    
-    // Reset lifelines
-    lifelines.fiftyFifty = 3;
-    lifelines.skip = 3;
-    lifelines.hint = 3;
-    updateLifelineButtons();
-    saveLifelinesToStorage();
-    
-    updateScoreDisplay();
-    generateQuiz();
-  } else {
-    // Si no se están mostrando de manera aleatoria, mezcla las preguntas y comienza desde el principio.
-    initializeRandomization();
-  }
-});
 
 // Función para mezclar las preguntas de manera aleatoria
 function shuffleQuestions() {
@@ -3353,6 +3320,44 @@ const submitBtn = document.getElementById("submitBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resultDiv = document.getElementById("result");
 const scoreDiv = document.getElementById("score");
+const strikeDisplay = document.getElementById("strike-display");
+
+// Update strike display
+function updateStrikeDisplay() {
+    const hearts = '❤️'.repeat(strikes);
+    strikeDisplay.textContent = hearts || '💔';
+}
+
+// Game over function
+function showGameOver() {
+    const messageBox = document.getElementById("messageBox");
+    if (messageBox) {
+        const messageText = messageBox.querySelector(".message-text");
+        messageText.innerHTML = '';
+        
+        const gameOverContent = document.createElement('div');
+        gameOverContent.innerHTML = `
+            <div style="font-size: 3rem; margin-bottom: 1rem;">😢</div>
+            <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">¡Se acabaron las vidas!</div>
+            <div style="font-size: 1rem; margin-bottom: 1rem;">Puntuación final: ${score}/${currentQuestion + 1}</div>
+        `;
+        
+        messageText.appendChild(gameOverContent);
+        
+        const restartBtn = document.createElement('button');
+        restartBtn.className = 'btn-primary';
+        restartBtn.textContent = 'Reiniciar Cuestionario';
+        restartBtn.style.display = 'inline-flex';
+        restartBtn.onclick = function() {
+            location.reload();
+        };
+        messageText.appendChild(restartBtn);
+        
+        messageBox.classList.remove("message-box");
+        messageBox.classList.add("error");
+        showMessageBox(messageBox);
+    }
+}
 
 const showQuestionBtn = document.getElementById("showQuestionBtn");
 const questionNumberInput = document.getElementById("questionNumberInput");
@@ -3374,10 +3379,8 @@ const totalQuestions = document.getElementById("totalQuestions");
 
 // Power-ups buttons
 const fiftyFiftyBtn = document.getElementById("fiftyFiftyBtn");
-const skipBtn = document.getElementById("skipBtn");
 const hintBtn = document.getElementById("hintBtn");
 const fiftyFiftyCount = document.getElementById("fiftyFiftyCount");
-const skipCount = document.getElementById("skipCount");
 const hintCount = document.getElementById("hintCount");
 
 // Animation constants for consistency
@@ -3386,9 +3389,6 @@ const ANIMATION_DURATION = {
     BASE: 300,
     SLOW: 500
 };
-
-// Delay for auto-randomization after initial render
-const INITIAL_RANDOMIZE_DELAY = 100;
 
 // Initialize total questions display
 totalQuestions.textContent = questions.length;
@@ -3513,20 +3513,16 @@ function showSadEmoji() {
 // Power-ups functions
 function updatePowerUpDisplay() {
     fiftyFiftyCount.textContent = powerUps.fiftyFifty;
-    skipCount.textContent = powerUps.skip;
     hintCount.textContent = powerUps.hint;
     
     const isFiftyFiftyDisabled = powerUps.fiftyFifty === 0 || usedPowerUps.fiftyFifty;
-    const isSkipDisabled = powerUps.skip === 0;
     const isHintDisabled = powerUps.hint === 0 || usedPowerUps.hint;
     
     fiftyFiftyBtn.disabled = isFiftyFiftyDisabled;
-    skipBtn.disabled = isSkipDisabled;
     hintBtn.disabled = isHintDisabled;
     
     // Update aria-labels for accessibility
     fiftyFiftyBtn.setAttribute('aria-label', `Comodín 50/50, ${powerUps.fiftyFifty} restantes`);
-    skipBtn.setAttribute('aria-label', `Saltar pregunta, ${powerUps.skip} restantes`);
     hintBtn.setAttribute('aria-label', `Mostrar pista, ${powerUps.hint} restantes`);
 }
 
@@ -3559,18 +3555,12 @@ function useFiftyFifty() {
     }
 }
 
-function useSkip() {
-    if (powerUps.skip > 0) {
-        powerUps.skip--;
-        updatePowerUpDisplay();
-        loadNextQuestion();
-    }
-}
-
 function useHint() {
     if (powerUps.hint > 0 && !usedPowerUps.hint) {
         const questionObj = questions[currentQuestion];
-        const hintText = `💡 Pista: Esta pregunta tiene ${questionObj.correctAnswers.length} respuesta(s) correcta(s)`;
+        const hintText = questionObj.hint 
+            ? `💡 Pista: ${questionObj.hint}` 
+            : `💡 Pista: Esta pregunta tiene ${questionObj.correctAnswers.length} respuesta(s) correcta(s)`;
         
         const existingHint = document.querySelector('.hint-message');
         if (!existingHint) {
@@ -3662,10 +3652,12 @@ if (questionObj.number === 242) {
     // Reset power-ups usage for this question
     usedPowerUps = {
         fiftyFifty: false,
-        skip: false,
         hint: false
     };
     updatePowerUpDisplay();
+    
+    // Update strike display
+    updateStrikeDisplay();
     
     // Actualiza la barra de progreso
     updateProgressBar();
@@ -3722,6 +3714,16 @@ function checkAnswers() {
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
                 showSadEmoji();
+                
+                // Deduct strike
+                strikes--;
+                updateStrikeDisplay();
+                
+                // Check for game over
+                if (strikes <= 0) {
+                    showGameOver();
+                    return;
+                }
             }
 
             messageText.appendChild(messageContent);
@@ -3753,6 +3755,9 @@ function checkAnswers() {
             const label = checkbox.closest('label');
             const isChecked = checkbox.checked;
             const isCorrectOption = correctAnswers.includes(checkbox.value);
+            
+            // Disable checkbox to prevent further changes
+            checkbox.disabled = true;
             
             if (isChecked && !isCorrectOption) {
                 // User selected wrong answer - show X
@@ -3796,6 +3801,16 @@ function checkAnswers() {
                 messageBox.classList.remove("message-box");
                 messageBox.classList.add("error");
                 showSadEmoji();
+                
+                // Deduct strike
+                strikes--;
+                updateStrikeDisplay();
+                
+                // Check for game over
+                if (strikes <= 0) {
+                    showGameOver();
+                    return;
+                }
             }
 
             messageText.appendChild(messageContent);
@@ -4022,13 +4037,6 @@ document.addEventListener('keydown', function(e) {
         }
     }
 });
-
-// Auto-randomize questions on page load (call function directly instead of simulating click)
-if (randomizeQuestionsBtn && !isRandomizing) {
-    setTimeout(() => {
-        initializeRandomization();
-    }, INITIAL_RANDOMIZE_DELAY);
-}
 
     // Aquí puedes llamar a la función displayQuestionWithAnswer y otras operaciones una vez que el DOM esté cargado.
     // Asegúrate de que esta llamada se realice en el lugar adecuado dentro de tu flujo de trabajo.
